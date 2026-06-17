@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeberl — Logo-Intro (3D)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hanken+Grotesk:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap');
+:root{--bg:#0a0d12;--ink:#eef2f6;--muted:#9fb3c8;--gold:#C69A52;--gold-l:#E0C184;--steel:#eef2f6;--red:#e8443a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:radial-gradient(130% 100% at 50% 38%,#161d27,#06080c 74%);color:var(--ink);font-family:'Hanken Grotesk',sans-serif;height:100vh;overflow:hidden;display:grid;place-items:center}
+.stage{position:relative;width:min(92vw,640px);text-align:center}
+.keywrap{position:relative;width:100%;aspect-ratio:1376/768}
+.key3d{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
+.waves{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.wave{fill:none;stroke-linecap:round}
+.wordmark{position:relative;margin-top:-46px;z-index:3}
+.wordmark svg{width:min(72vw,440px);height:auto;overflow:visible}
+.wm{font-family:'Archivo Black',sans-serif;fill:var(--steel)}
+.sub{margin-top:12px;font-family:'Spline Sans Mono',monospace;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);opacity:0}
+.sub .st{color:var(--gold)}
+.bar{position:fixed;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),var(--red))}
+.grain{position:fixed;inset:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.replay{position:fixed;bottom:20px;right:22px;font-family:'Spline Sans Mono',monospace;font-size:.7rem;color:#6f88a3;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:40px;padding:7px 16px;cursor:pointer}
+.replay:hover{color:var(--ink)}
+@media(prefers-reduced-motion:reduce){.bar{width:100%!important}}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="keywrap">
+    <!-- Rote Signal-Wellen (hinter dem Schlüssel) -->
+    <svg class="waves" id="waves" viewBox="0 0 1376 768" preserveAspectRatio="xMidYMid meet">
+      <defs><linearGradient id="redg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff5a3c"/><stop offset="1" stop-color="#b8241a"/></linearGradient></defs>
+      <g id="wavesL" stroke="url(#redg)">
+        <path class="wave" d="M250,300 Q214,400 250,500" stroke-width="13" opacity=".95"/>
+        <path class="wave" d="M196,272 Q140,400 196,528" stroke-width="11" opacity=".78"/>
+        <path class="wave" d="M142,244 Q66,400 142,556"  stroke-width="9"  opacity=".58"/>
+        <path class="wave" d="M88,216  Q-8,400 88,584"   stroke-width="7"  opacity=".38"/>
+      </g>
+      <g id="wavesR" stroke="url(#redg)">
+        <path class="wave" d="M1126,300 Q1162,400 1126,500" stroke-width="13" opacity=".95"/>
+        <path class="wave" d="M1180,272 Q1236,400 1180,528" stroke-width="11" opacity=".78"/>
+        <path class="wave" d="M1234,244 Q1310,400 1234,556" stroke-width="9"  opacity=".58"/>
+        <path class="wave" d="M1288,216 Q1384,400 1288,584" stroke-width="7"  opacity=".38"/>
+      </g>
+    </svg>
+    <!-- 3D-Schlüssel (Higgsfield-Render) -->
+    <img class="key3d" id="key" src="assets/brand/key3d.jpg" alt="Zeberl Schlüssel">
+  </div>
+  <div class="wordmark" id="wm">
+    <svg viewBox="0 0 440 96"><text class="wm" x="220" y="74" text-anchor="middle" font-size="84" transform="skewX(-8)" letter-spacing="2">ZEBERL</text></svg>
+  </div>
+  <div class="sub" id="sub">Sicherheitstechnik <span class="st">·</span> Neumarkt</div>
+</div>
+<div class="bar" id="bar"></div>
+<div class="grain"></div>
+<button class="replay" onclick="run()">↻ Replay</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let pulse;
+function run(){
+  if(pulse) pulse.kill();
+  const lw=[...document.querySelectorAll('#wavesL .wave')];
+  const rw=[...document.querySelectorAll('#wavesR .wave')];
+  gsap.set('#wavesL .wave',{transformOrigin:'250px 400px'});
+  gsap.set('#wavesR .wave',{transformOrigin:'1126px 400px'});
+  if(reduce){
+    gsap.set('#key',{x:0,opacity:1,rotate:0});
+    gsap.set('.wave',{opacity:1,scale:1});
+    gsap.set(['#wm','#sub'],{opacity:1}); gsap.set('#bar',{width:'100%'});
+    return;
+  }
+  gsap.set('#key',{x:-130,opacity:0,rotate:-7,transformOrigin:'center center'});
+  gsap.set('.wave',{opacity:0,scale:.5});
+  gsap.set('#wm',{opacity:0,y:18});
+  gsap.set('#sub',{opacity:0});
+  gsap.set('#bar',{width:'0%'});
+  const tl=gsap.timeline();
+  tl.to('#bar',{width:'100%',duration:3.4,ease:'power1.inOut'},0)
+    // Schlüssel fährt ein + „aufschließen" (Dreh-Settle + Klick-Pop)
+    .to('#key',{x:0,opacity:1,duration:1,ease:'power3.out'},.2)
+    .to('#key',{rotate:0,duration:.55,ease:'back.out(2)'},.95)
+    .to('#key',{scale:1.035,duration:.12,yoyo:true,repeat:1,transformOrigin:'center center'},1.35)
+    // Wellen strahlen aus
+    .to(lw,{opacity:(i,t)=>+t.getAttribute('opacity'),scale:1,duration:.55,stagger:.07,ease:'power2.out'},1.35)
+    .to(rw,{opacity:(i,t)=>+t.getAttribute('opacity'),scale:1,duration:.55,stagger:.07,ease:'power2.out'},1.35)
+    // Wortmarke
+    .to('#wm',{opacity:1,y:0,duration:.6,ease:'power3.out'},1.75)
+    .to('#sub',{opacity:1,duration:.5},2.05)
+    .add(()=>startPulse(),2.3);
+}
+function startPulse(){
+  pulse=gsap.timeline({repeat:-1});
+  pulse.to('#wavesL .wave',{scale:1.07,duration:1.2,stagger:.08,ease:'sine.inOut',transformOrigin:'250px 400px'},0)
+       .to('#wavesR .wave',{scale:1.07,duration:1.2,stagger:.08,ease:'sine.inOut',transformOrigin:'1126px 400px'},0)
+       .to('#wavesL .wave',{scale:1,duration:1.2,stagger:.08,ease:'sine.inOut'},1.2)
+       .to('#wavesR .wave',{scale:1,duration:1.2,stagger:.08,ease:'sine.inOut'},1.2);
+}
+run();
+</script>
+</body>
+</html>

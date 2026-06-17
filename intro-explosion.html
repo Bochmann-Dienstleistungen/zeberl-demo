@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeberl — Intro (Explosion)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap');
+:root{--bg:#0a0d12;--ink:#eef2f6;--muted:#9fb3c8;--gold:#C69A52;--gold-l:#E0C184;--line:#cfe0f0;--dim:#6f88a3}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:radial-gradient(130% 100% at 50% 30%,#141a22,#0a0d12 70%);color:var(--ink);font-family:'Hanken Grotesk',sans-serif;height:100vh;overflow:hidden;display:grid;place-items:center}
+.stage{position:relative;width:min(92vw,560px);text-align:center}
+.schema{width:100%;height:auto;overflow:visible}
+.schema .ln{fill:none;stroke:var(--line);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.schema .thin{stroke-width:1;stroke:var(--muted)}
+.schema .brass{stroke:var(--gold-l)}
+.schema .fillbrass{fill:var(--gold-l)}
+.schema .pin{stroke:var(--line);stroke-width:7;stroke-linecap:round}
+.schema .pin.mk{stroke:var(--gold-l)}
+.logo{margin-top:30px;perspective:900px}
+.eyebrow{font-family:'Spline Sans Mono',monospace;font-size:.64rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;opacity:0}
+.wordwrap{position:relative;display:inline-block}
+.word{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(2.6rem,9vw,4.6rem);letter-spacing:.05em;display:flex;gap:.01em;justify-content:center;color:var(--ink)}
+.word .ch{display:inline-block;transform:translateY(115%) rotateX(-90deg);transform-origin:bottom}
+.shimmer{position:absolute;inset:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(2.6rem,9vw,4.6rem);letter-spacing:.05em;display:flex;gap:.01em;justify-content:center;pointer-events:none;background:linear-gradient(100deg,transparent 22%,rgba(224,193,132,.95) 48%,transparent 70%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;opacity:0}
+.sub{margin-top:13px;font-family:'Spline Sans Mono',monospace;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);opacity:0}
+.sub .st{color:var(--gold)}
+.bar{position:fixed;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),#C2451D)}
+.grain{position:fixed;inset:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.replay{position:fixed;bottom:20px;right:22px;font-family:'Spline Sans Mono',monospace;font-size:.7rem;letter-spacing:.08em;color:var(--dim);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:40px;padding:7px 16px;cursor:pointer}
+.replay:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="schema" id="schema" viewBox="0 0 560 470" aria-label="Profilzylinder, Explosionsansicht">
+    <!-- BODY: Gehäuse + Plug + Keypins (statisch) -->
+    <g id="body">
+      <path class="ln" d="M280,70 C326,70 363,107 363,153 C363,189 341,210 332,230 L325,372 Q325,402 296,402 L264,402 Q235,402 235,372 L228,230 C219,210 197,189 197,153 C197,107 234,70 280,70 Z"/>
+      <circle class="ln thin" cx="280" cy="153" r="56"/>
+      <circle class="ln thin" cx="280" cy="153" r="28"/>
+      <!-- Bohrschutz-Stifte -->
+      <circle class="ln brass" cx="238" cy="120" r="4"/>
+      <circle class="ln brass" cx="322" cy="120" r="4"/>
+      <!-- Keyway -->
+      <path class="ln" d="M280,158 L280,346 M268,346 L280,332 L292,346 L280,360 Z"/>
+      <!-- Keypins (in Plug) -->
+      <circle class="fillbrass" cx="252" cy="150" r="3.4"/><circle class="fillbrass" cx="266" cy="150" r="3.4"/><circle class="fillbrass" cx="280" cy="150" r="3.4"/><circle class="fillbrass" cx="294" cy="150" r="3.4"/><circle class="fillbrass" cx="308" cy="150" r="3.4"/>
+    </g>
+    <!-- PINS: Stiftzuhaltungen (Treiber) -->
+    <g id="pins">
+      <line class="pin" x1="252" y1="96" x2="252" y2="122"/><line class="pin" x1="266" y1="96" x2="266" y2="122"/><line class="pin mk" x1="280" y1="96" x2="280" y2="122"/><line class="pin" x1="294" y1="96" x2="294" y2="122"/><line class="pin" x1="308" y1="96" x2="308" y2="122"/>
+    </g>
+    <!-- SPRINGS: Federn -->
+    <g id="springs">
+      <polyline class="ln thin" points="248,84 256,80 248,76 256,72 248,68"/>
+      <polyline class="ln thin" points="262,84 270,80 262,76 270,72 262,68"/>
+      <polyline class="ln thin" points="276,84 284,80 276,76 284,72 276,68"/>
+      <polyline class="ln thin" points="290,84 298,80 290,76 298,72 290,68"/>
+      <polyline class="ln thin" points="304,84 312,80 304,76 312,72 304,68"/>
+    </g>
+    <!-- KEY: Schlüssel -->
+    <g id="key">
+      <path class="ln brass" d="M280,196 L280,330"/>
+      <path class="ln brass" d="M280,330 l9,-9 M280,318 l9,-9 M280,306 l9,-9 M280,294 l9,-9"/>
+      <circle class="ln brass" cx="280" cy="206" r="15"/>
+      <circle class="ln brass" cx="280" cy="206" r="6"/>
+    </g>
+  </svg>
+
+  <div class="logo" id="logo">
+    <div class="eyebrow" id="eyebrow">Meisterbetrieb für Sicherheitstechnik</div>
+    <div class="wordwrap">
+      <div class="word" aria-label="ZEBERL"><span class="ch">Z</span><span class="ch">E</span><span class="ch">B</span><span class="ch">E</span><span class="ch">R</span><span class="ch">L</span></div>
+      <div class="shimmer" id="shimmer">ZEBERL</div>
+    </div>
+    <div class="sub" id="sub">Schließanlagen <span class="st">·</span> Zutritt <span class="st">·</span> Neumarkt</div>
+  </div>
+</div>
+<div class="bar" id="bar"></div>
+<div class="grain"></div>
+<button class="replay" id="replay" onclick="run()">↻ Replay</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function run(){
+  const tl=gsap.timeline();
+  // Start: explodiert + Logo versteckt
+  gsap.set('#springs',{y:-150,opacity:0});
+  gsap.set('#pins',{y:-78,opacity:0});
+  gsap.set('#key',{y:170,opacity:0});
+  gsap.set('#body',{opacity:0,scale:.96,transformOrigin:'280px 236px'});
+  gsap.set(['.word .ch'],{y:'115%',rotateX:-90});
+  gsap.set(['#eyebrow','#sub','#shimmer'],{opacity:0});
+  gsap.set('#bar',{width:'0%'});
+  if(reduce){
+    gsap.set(['#springs','#pins','#key','#body'],{y:0,opacity:1,scale:1});
+    gsap.set('.word .ch',{y:'0%',rotateX:0});
+    gsap.set(['#eyebrow','#sub'],{opacity:1});
+    gsap.set('#bar',{width:'100%'});
+    return;
+  }
+  tl.to('#bar',{width:'100%',duration:3.4,ease:'power1.inOut'},0)
+    .to('#body',{opacity:1,scale:1,duration:.7,ease:'power2.out'},.2)
+    // Bauteile fliegen ein & rasten
+    .to('#key',{y:0,opacity:1,duration:.9,ease:'back.out(1.4)'},.5)
+    .to('#pins',{y:0,opacity:1,duration:.8,ease:'back.out(1.6)'},.8)
+    .to('#springs',{y:0,opacity:1,duration:.8,ease:'back.out(1.6)'},1.0)
+    // Logo
+    .to('#eyebrow',{opacity:1,duration:.5},1.5)
+    .to('.word .ch',{y:'0%',rotateX:0,duration:.7,stagger:.07,ease:'power3.out'},1.6)
+    .to('#shimmer',{opacity:1,duration:.1},2.3)
+    .fromTo('#shimmer',{backgroundPosition:'220% center'},{backgroundPosition:'-220% center',duration:1.4,ease:'power1.inOut'},2.3)
+    .to('#sub',{opacity:1,duration:.5},2.4);
+}
+run();
+</script>
+</body>
+</html>

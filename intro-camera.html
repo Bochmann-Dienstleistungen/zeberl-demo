@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeberl — Kamera-Intro</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Hanken+Grotesk:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap');
+:root{--ink:#eef2f6;--muted:#9fb3c8;--gold:#C69A52;--gold-l:#E0C184}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#06080c;color:var(--ink);font-family:'Hanken Grotesk',sans-serif;height:100vh;overflow:hidden}
+
+#site{position:fixed;inset:0;display:grid;place-items:center;text-align:center;background:radial-gradient(120% 90% at 50% 32%,#141a22,#06080c 72%);opacity:0;transform:scale(1.06)}
+#site .eyebrow{font-family:'Spline Sans Mono',monospace;font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+#site h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(2.6rem,8vw,5rem);letter-spacing:-.02em;text-transform:uppercase}
+#site h1 em{font-style:normal;color:var(--gold-l)}
+#site p{color:var(--muted);margin-top:14px}
+
+.intro{position:fixed;inset:0;z-index:10;overflow:hidden;will-change:opacity,filter}
+.vidwrap{position:absolute;inset:0;will-change:transform;transform-origin:60% 52%}
+.intro video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.scrim{position:absolute;inset:0;background:radial-gradient(120% 100% at 60% 52%,transparent 38%,rgba(6,8,12,.5) 100%)}
+.rec{position:absolute;top:22px;left:24px;z-index:13;display:flex;align-items:center;gap:8px;font-family:'Spline Sans Mono',monospace;font-size:.72rem;letter-spacing:.18em;color:rgba(238,242,246,.85)}
+.rec .dot{width:9px;height:9px;border-radius:50%;background:#ff3b30;box-shadow:0 0 10px #ff3b30;animation:blink 1.3s steps(1) infinite}
+@keyframes blink{50%{opacity:.25}}
+.bloom{position:absolute;left:60%;top:52%;width:140vmax;height:140vmax;transform:translate(-50%,-50%) scale(.22);z-index:11;pointer-events:none;opacity:0;
+  background:radial-gradient(circle,rgba(255,224,170,.95) 0%,rgba(255,196,120,.6) 16%,rgba(232,140,60,.22) 36%,transparent 60%);mix-blend-mode:screen;will-change:transform,opacity}
+.peak{position:absolute;inset:0;z-index:12;background:radial-gradient(circle at 60% 52%,rgba(255,240,215,.95),rgba(255,220,170,0) 45%);opacity:0;pointer-events:none}
+.skip{position:absolute;bottom:24px;right:26px;z-index:14;font-family:'Spline Sans Mono',monospace;font-size:.74rem;letter-spacing:.08em;color:rgba(238,242,246,.72);background:rgba(255,255,255,.06);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.16);border-radius:50px;padding:8px 18px;cursor:pointer}
+.skip:hover{color:#fff;border-color:var(--gold-l)}
+.replay{position:fixed;bottom:24px;left:26px;z-index:20;font-family:'Spline Sans Mono',monospace;font-size:.72rem;color:#6f88a3;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:40px;padding:7px 16px;cursor:pointer}
+.replay:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div id="site">
+  <div>
+    <div class="eyebrow">Meisterbetrieb · Neumarkt</div>
+    <h1>Wir <em>sehen</em><br>Ihre Sicherheit.</h1>
+    <p>Videoüberwachung · Zutrittskontrolle · Schließanlagen</p>
+  </div>
+</div>
+
+<div class="intro" id="intro">
+  <div class="vidwrap" id="vidwrap">
+    <video id="vid" autoplay muted playsinline poster="assets/video/camera-frame.jpg">
+      <source src="assets/video/camera-anim.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="scrim"></div>
+  <div class="rec" id="rec"><span class="dot"></span>REC</div>
+  <div class="bloom" id="bloom"></div>
+  <div class="peak" id="peak"></div>
+  <button class="skip" id="skip">Überspringen ✕</button>
+</div>
+<button class="replay" id="replay">↻ Replay</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+/* ====== Sekunde, an der die Linse „scharf"/aktiv ist (vor KI-Drift) ====== */
+const CUT_TIME = 3.2;
+/* ======================================================================== */
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const vid=document.getElementById('vid');
+let done=false;
+function focusWow(){
+  if(done)return; done=true;
+  try{ vid.pause(); }catch(e){}
+  if(reduce){ gsap.set('#intro',{opacity:0,display:'none'}); gsap.set('#site',{opacity:1,scale:1}); return; }
+  const tl=gsap.timeline();
+  tl.to('#rec',{opacity:0,duration:.3},0)
+    .to('#bloom',{opacity:1,scale:1,duration:1.25,ease:'power2.out'},0)   // Licht aus der Linse
+    .to('#peak',{opacity:.85,duration:.28,ease:'power2.in'},.15)
+    .to('#peak',{opacity:0,duration:.7,ease:'power2.out'},.45)
+    .to('#vidwrap',{scale:2.1,duration:1.4,ease:'power2.in'},0)           // in die Linse zoomen
+    .to('#intro',{opacity:0,filter:'blur(16px)',duration:.9,ease:'power2.inOut'},.95)
+    .to('#site',{opacity:1,scale:1,duration:1.2,ease:'power3.out'},1.05)
+    .set('#intro',{display:'none'});
+}
+vid.addEventListener('timeupdate',()=>{ if(vid.currentTime>=CUT_TIME) focusWow(); });
+vid.addEventListener('ended',focusWow);
+setTimeout(focusWow,(CUT_TIME+2.6)*1000);
+function restart(){ done=false; gsap.set('#intro',{display:'block',opacity:1,filter:'blur(0px)'}); gsap.set('#vidwrap',{scale:1}); gsap.set('#bloom',{opacity:0,scale:.22}); gsap.set(['#peak'],{opacity:0}); gsap.set('#rec',{opacity:1}); gsap.set('#site',{opacity:0,scale:1.06}); vid.currentTime=0; const p=vid.play&&vid.play(); if(p&&p.catch)p.catch(()=>{}); }
+document.getElementById('replay').addEventListener('click',restart);
+document.getElementById('skip').addEventListener('click',focusWow);
+const pp=vid.play&&vid.play(); if(pp&&pp.catch)pp.catch(()=>{});
+</script>
+</body>
+</html>

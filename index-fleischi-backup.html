@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeberl Sicherheitstechnik — Schließanlagen & Zutrittskontrolle in Neumarkt</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230a0d12'/><circle cx='32' cy='26' r='13' fill='none' stroke='%23C69A52' stroke-width='4'/><rect x='28' y='38' width='8' height='18' fill='%23C69A52'/></svg>">
+<meta name="description" content="Zeberl Sicherheitstechnik in Neumarkt: Schließanlagen, Zutrittskontrolle und Automatikschlösser für Gewerbe und Industrie. Meisterbetrieb mit 24/7-Notdienst.">
+<meta property="og:title" content="Zeberl Sicherheitstechnik — Sicherheit aus Neumarkt">
+<meta property="og:description" content="Schließanlagen, Zutrittskontrolle & Automatikschlösser vom Meisterbetrieb. 24/7-Notdienst.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="css/styles.css?v=z2">
+<link rel="stylesheet" href="css/premium.css?v=z2">
+<link rel="stylesheet" href="css/editorial.css?v=z2">
+<link rel="preload" as="image" href="assets/video/assembled.jpg">
+<link rel="preload" as="image" href="assets/img/hero-security.jpg">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500&display=swap');
+/* ============ HIGGSFIELD VIDEO-INTRO ============ */
+#video-intro{position:fixed;inset:0;z-index:1000;background:#0a0d12;display:grid;place-items:center;transition:opacity .9s ease,visibility .9s ease}
+#video-intro.done{opacity:0;visibility:hidden;pointer-events:none}
+#video-intro video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#video-intro .vi-scrim{position:absolute;inset:0;background:radial-gradient(120% 100% at 50% 50%,transparent 28%,rgba(10,13,18,.62) 100%),linear-gradient(to bottom,rgba(10,13,18,.32),rgba(10,13,18,.52))}
+#video-intro .vi-center{position:relative;z-index:2;text-align:center;padding:0 20px}
+.vi-eyebrow{font-family:'Hanken Grotesk',sans-serif;font-size:.62rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;opacity:0;animation:viFade .9s ease .5s forwards}
+.vi-word{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:clamp(2.8rem,11vw,6.5rem);letter-spacing:.05em;color:#fff;display:flex;gap:.01em;justify-content:center;text-shadow:0 10px 50px rgba(0,0,0,.7)}
+.vi-word .ch{display:inline-block;transform:translateY(120%);animation:viChar .85s cubic-bezier(.2,.85,.25,1) forwards}
+@keyframes viChar{to{transform:none}}
+.vi-sub{margin-top:16px;font-family:'Hanken Grotesk',sans-serif;font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(238,242,246,.82);opacity:0;animation:viFade .9s ease 1.05s forwards}
+.vi-sub .st{color:var(--gold)}
+.vi-skip{position:absolute;bottom:24px;right:26px;z-index:3;font-family:'Hanken Grotesk',sans-serif;font-size:.74rem;letter-spacing:.08em;color:rgba(238,242,246,.72);background:rgba(255,255,255,.06);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.16);border-radius:50px;padding:8px 18px;cursor:pointer;transition:.25s}
+.vi-skip:hover{color:#fff;border-color:var(--gold)}
+@keyframes viFade{to{opacity:1}}
+body.intro-lock{overflow:hidden}
+
+/* ============ ZEBERL — kleine Komponenten ============ */
+.hero-status{margin-top:22px;display:inline-flex;align-items:center;gap:9px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text);padding:8px 16px;border-radius:100px;background:rgba(255,255,255,.06);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12)}
+.hs-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;box-shadow:0 0 10px currentColor}
+.hs-dot.on{background:#43d17a;color:#43d17a}.hs-dot.off{background:#e0a23a;color:#e0a23a}
+
+.alertbar{position:relative;z-index:60;background:linear-gradient(90deg,#1a1108,#0a0d12);border-bottom:1px solid rgba(255,255,255,.07);font-family:'Hanken Grotesk',sans-serif;font-size:.83rem}
+.alertbar .inner{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:13px;padding:9px 24px;flex-wrap:wrap;color:var(--text-muted)}
+.alertbar .pp{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(194,69,29,.6);animation:ppulse 2.2s infinite}
+@keyframes ppulse{0%{box-shadow:0 0 0 0 rgba(194,69,29,.5)}70%{box-shadow:0 0 0 9px rgba(194,69,29,0)}100%{box-shadow:0 0 0 0 rgba(194,69,29,0)}}
+.alertbar a{color:#E0C184;font-weight:700}
+
+.notdienst-band{position:relative;overflow:hidden;background:linear-gradient(120deg,#1b0f07,#0a0d12 70%);border-top:1px solid rgba(224,193,132,.16);border-bottom:1px solid rgba(224,193,132,.16)}
+.notdienst-band .nd-inner{max-width:1100px;margin:0 auto;padding:clamp(48px,8vw,84px) 24px;display:grid;grid-template-columns:1.3fr auto;gap:32px;align-items:center}
+.notdienst-band .nd-k{font-family:'Hanken Grotesk',sans-serif;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:12px}
+.notdienst-band h2{margin-bottom:10px}
+.notdienst-band p{color:var(--text-muted);max-width:48ch}
+.notdienst-band .nd-call{text-align:right}
+.notdienst-band .nd-num{font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:clamp(1.6rem,3.4vw,2.4rem);color:var(--text);white-space:nowrap}
+@media(max-width:740px){.notdienst-band .nd-inner{grid-template-columns:1fr;gap:22px}.notdienst-band .nd-call{text-align:left}}
+
+.usecase .special-name{font-family:'Bricolage Grotesque',serif}
+
+/* ============ AUFBAU — Explosionszeichnung (Scroll-Reveal) ============ */
+.explode-sec{position:relative;height:220vh;background:#0c1622}
+.explode-stage{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding:70px 24px}
+.explode-stage .section-head{margin-bottom:22px}
+#explodeSchema{width:min(92vw,660px);height:auto;overflow:visible}
+#explodeSchema .ln{fill:none;stroke:#cfe0f0;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+#explodeSchema .thin{stroke-width:1;stroke:#9fb3c8}
+#explodeSchema .brass{stroke:#E0C184}
+#explodeSchema .fillbrass{fill:#E0C184}
+#explodeSchema .pin{stroke:#cfe0f0;stroke-width:7;stroke-linecap:round}
+#explodeSchema .pin.mk{stroke:#E0C184}
+#explodeSchema text{font-family:'Spline Sans Mono',ui-monospace,monospace;fill:#9fb3c8;font-size:13px;letter-spacing:.04em}
+.e-label{opacity:0}
+@media(max-width:680px){.explode-sec{height:180vh}#explodeSchema text{font-size:16px}}
+
+/* Hero aufs dunkle Theme ziehen (editorial.css war fürs Light-Theme hell verdrahtet) */
+.hero-editorial{background:radial-gradient(ellipse 70% 60% at 12% 0%, rgba(198,154,82,.10), transparent 62%), var(--bg) !important}
+.hero-editorial h1,.he-meta-item .n{color:var(--text) !important}
+.hero-editorial h1 em{color:var(--red) !important}
+.he-lead{color:var(--text-muted) !important}
+.he-lead strong{color:var(--text) !important}
+.he-meta{border-top-color:rgba(255,255,255,.12) !important}
+.he-meta-item .l{color:var(--text-muted) !important}
+.he-eyebrow.ed-kicker,.hero-editorial .ed-kicker{color:var(--gold) !important}
+.hero-editorial .ed-kicker::before{background:var(--gold)}
+.btn-ghost{color:var(--text);border-color:rgba(255,255,255,.30)}
+.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:var(--text)}
+</style>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Zeberl Sicherheitstechnik","description":"Schließanlagen, Zutrittskontrolle und Automatikschlösser sowie 24/7-Notdienst in Neumarkt.","address":{"@type":"PostalAddress","streetAddress":"Hallertorstraße 20","addressLocality":"Neumarkt","postalCode":"92318","addressCountry":"DE"},"telephone":"+49918122400","email":"zeberl@zeberl.de","openingHours":["Mo-Fr 08:00-17:00"],"areaServed":"Neumarkt in der Oberpfalz"}</script>
+</head>
+<body>
+
+<!-- ============ HIGGSFIELD VIDEO-INTRO ============ -->
+<div id="video-intro">
+  <video id="introVid" autoplay muted playsinline preload="auto" poster="assets/video/assembled.jpg">
+    <source src="assets/video/intro.mp4" type="video/mp4">
+  </video>
+  <div class="vi-scrim"></div>
+  <div class="vi-center">
+    <div class="vi-eyebrow">Meisterbetrieb für Sicherheitstechnik</div>
+    <div class="vi-word" aria-label="ZEBERL">
+      <span class="ch" style="animation-delay:.55s">Z</span><span class="ch" style="animation-delay:.62s">E</span><span class="ch" style="animation-delay:.69s">B</span><span class="ch" style="animation-delay:.76s">E</span><span class="ch" style="animation-delay:.83s">R</span><span class="ch" style="animation-delay:.90s">L</span>
+    </div>
+    <div class="vi-sub">Schließanlagen <span class="st">·</span> Zutritt <span class="st">·</span> Neumarkt</div>
+  </div>
+  <button class="vi-skip" id="viSkip">Überspringen ✕</button>
+</div>
+
+<!-- ============ NOTRUF TOPBAR ============ -->
+<div class="alertbar">
+  <div class="inner"><span class="pp"></span>24/7 Notöffnung &amp; Schlüsseldienst in Neumarkt und Umgebung — <a href="tel:+4915115944458">Notruf 0151 15944458</a></div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav glass">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-name">Zeberl</span>
+      <span class="logo-award">Sicherheitstechnik · Neumarkt</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Start</a></li>
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#betrieb">Betrieb</a></li>
+      <li><a href="#referenzen">Referenzen</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#kontakt" class="btn btn-red btn-sm">Beratung anfragen</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-nav">
+  <button class="mobile-nav-close" aria-label="Schließen">&#x2715;</button>
+  <a href="index.html">Start</a>
+  <a href="#leistungen">Leistungen</a>
+  <a href="#betrieb">Betrieb</a>
+  <a href="#referenzen">Referenzen</a>
+  <a href="#kontakt">Kontakt</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero hero-editorial">
+  <div class="he-grid">
+    <div class="he-text">
+      <span class="ed-kicker he-eyebrow">Meisterbetrieb · Neumarkt i.d.OPf.</span>
+      <h1>Sicherheit,<br>die <em>hält</em>.</h1>
+      <p class="he-lead">
+        Schließanlagen, Zutrittskontrolle und Automatikschlösser für Gewerbe, Industrie und
+        öffentliche Gebäude — <strong>geplant, montiert und gewartet aus einer Hand.</strong>
+        Und wenn's brennt: 24/7-Notdienst.
+      </p>
+      <div class="he-actions">
+        <a href="#kontakt" class="btn btn-red btn-lg">Kostenlose Beratung</a>
+        <a href="#leistungen" class="btn btn-ghost btn-lg">Leistungen ansehen</a>
+      </div>
+      <div class="he-meta">
+        <div class="he-meta-item"><div class="n">24/7</div><div class="l">Notöffnung</div></div>
+        <div class="he-meta-item"><div class="n">3</div><div class="l">Kerngewerke</div></div>
+        <div class="he-meta-item"><div class="n">Festpreis</div><div class="l">mit Garantie</div></div>
+      </div>
+      <div class="hero-status" id="heroStatus"></div>
+    </div>
+    <div class="he-photo">
+      <div class="he-photo-frame">
+        <img src="assets/img/hero-security.jpg" alt="Hochwertige Sicherheitstür mit Mehrpunktverriegelung und Messing-Profilzylinder" width="896" height="1200">
+      </div>
+      <div class="he-seal">
+        <span class="star">★</span>
+        <span class="big">Meister-<br>betrieb</span>
+        <span class="sm">Sicherheitstechnik</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST TICKER ============ -->
+<div class="award-strip">
+  <div class="award-ticker">
+    <div class="award-item">Meisterbetrieb · zertifiziert</div><span class="award-sep"></span>
+    <div class="award-item">24/7 Notöffnung · schadenfrei</div><span class="award-sep"></span>
+    <div class="award-item">Herstellerunabhängige Beratung</div><span class="award-sep"></span>
+    <div class="award-item">Schließanlagen · Zutrittskontrolle · Automatikschlösser</div><span class="award-sep"></span>
+    <div class="award-item">Festpreis &amp; Garantie</div><span class="award-sep"></span>
+    <div class="award-item">Region Neumarkt &amp; Oberpfalz</div><span class="award-sep"></span>
+    <div class="award-item">Meisterbetrieb · zertifiziert</div><span class="award-sep"></span>
+    <div class="award-item">24/7 Notöffnung · schadenfrei</div><span class="award-sep"></span>
+    <div class="award-item">Herstellerunabhängige Beratung</div><span class="award-sep"></span>
+    <div class="award-item">Schließanlagen · Zutrittskontrolle · Automatikschlösser</div><span class="award-sep"></span>
+    <div class="award-item">Festpreis &amp; Garantie</div><span class="award-sep"></span>
+    <div class="award-item">Region Neumarkt &amp; Oberpfalz</div><span class="award-sep"></span>
+  </div>
+</div>
+
+<!-- ============ LEISTUNGEN — Editorial Rows ============ -->
+<section class="sect" id="leistungen">
+  <div class="container">
+    <div class="section-head text-center reveal" style="margin-bottom:90px;">
+      <span class="label">Leistungen</span>
+      <h2>Drei Disziplinen. <em>Ein Anspruch.</em></h2>
+      <p class="text-lead" style="max-width:560px;margin:18px auto 0;">Von der einzelnen Tür bis zur vernetzten Anlage über mehrere Standorte — geplant, montiert und gewartet von einem Team, das jeden Zylinder kennt.</p>
+    </div>
+    <div class="usp-editorial">
+
+      <div class="usp-row reveal">
+        <div class="usp-row-img">
+          <img src="assets/img/lock-c.jpg" alt="Moderne Schließanlage mit Zylinder und Schlüssel" loading="lazy">
+          <span class="usp-img-tag">Mechanisch &amp; mechatronisch</span>
+        </div>
+        <div class="usp-row-text">
+          <h3>Schließ<em>anlagen</em>.</h3>
+          <p>Zentral verwaltet, klar in der Schließhierarchie, jederzeit erweiterbar. General- und Zentralschließanlagen mit Bohrschutz und Aufbohrsicherung — vom Handwerksbetrieb bis zum Industriepark. Ein Schlüssel verloren? Nachschließbar, ohne die ganze Anlage zu tauschen.</p>
+          <span class="row-meta">General- &amp; Zentralschließanlagen · Bohrschutz</span>
+        </div>
+      </div>
+
+      <div class="usp-row reverse reveal">
+        <div class="usp-row-img">
+          <img src="assets/img/access-c.jpg" alt="Elektronische Zutrittskontrolle mit Tastenfeld" loading="lazy">
+          <span class="usp-img-tag">Elektronisch · protokolliert</span>
+        </div>
+        <div class="usp-row-text">
+          <h3>Zutritts<em>kontrolle</em>.</h3>
+          <p>Wer darf wann wohin? Transponder, PIN oder Smartphone — Berechtigungen vergeben und sperren Sie in Sekunden, lückenlos dokumentiert. Zeit- und Zonenprofile für jede Tür. Verlorene Medien sind sofort wertlos, ohne dass ein einziger Zylinder getauscht werden muss.</p>
+          <span class="row-meta">Transponder · PIN · Smartphone · Zeitprofile</span>
+        </div>
+      </div>
+
+      <div class="usp-row reveal">
+        <div class="usp-row-img">
+          <img src="assets/img/lock-b.jpg" alt="Automatikschloss mit Mehrfachverriegelung" loading="lazy">
+          <span class="usp-img-tag">Selbstverriegelnd</span>
+        </div>
+        <div class="usp-row-text">
+          <h3>Automatik<em>schlösser</em>.</h3>
+          <p>Mehrfachverriegelungen, die bei jedem Zuziehen automatisch sichern — Komfort und Einbruchschutz in einem. Geeignet für Flucht- und Rettungswege, nachrüstbar in Bestandstüren. Nie wieder die Frage, ob abgeschlossen wurde: Die Tür macht es selbst.</p>
+          <span class="row-meta">Selbstverriegelnd · Fluchtweg-tauglich · nachrüstbar</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUFBAU — Explosionszeichnung (Scroll-Reveal) ============ -->
+<section class="explode-sec" id="aufbau">
+  <div class="explode-stage">
+    <div class="section-head text-center">
+      <span class="label">Aufbau</span>
+      <h2>Was in einer <em>guten Schließung</em> steckt</h2>
+      <p class="text-lead" style="max-width:520px;margin:14px auto 0;">Scrollen — der Profilzylinder zerlegt sich in seine Bauteile. Jede Schicht ist ein Stück Sicherheit.</p>
+    </div>
+    <svg id="explodeSchema" viewBox="0 -190 760 700" aria-label="Profilzylinder Explosionsansicht">
+      <g id="e-springs">
+        <polyline class="ln thin" points="248,84 256,80 248,76 256,72 248,68"/>
+        <polyline class="ln thin" points="262,84 270,80 262,76 270,72 262,68"/>
+        <polyline class="ln thin" points="276,84 284,80 276,76 284,72 276,68"/>
+        <polyline class="ln thin" points="290,84 298,80 290,76 298,72 290,68"/>
+        <polyline class="ln thin" points="304,84 312,80 304,76 312,72 304,68"/>
+      </g>
+      <g id="e-pins">
+        <line class="pin" x1="252" y1="96" x2="252" y2="122"/><line class="pin" x1="266" y1="96" x2="266" y2="122"/><line class="pin mk" x1="280" y1="96" x2="280" y2="122"/><line class="pin" x1="294" y1="96" x2="294" y2="122"/><line class="pin" x1="308" y1="96" x2="308" y2="122"/>
+      </g>
+      <g id="e-body">
+        <path class="ln" d="M280,70 C326,70 363,107 363,153 C363,189 341,210 332,230 L325,372 Q325,402 296,402 L264,402 Q235,402 235,372 L228,230 C219,210 197,189 197,153 C197,107 234,70 280,70 Z"/>
+        <circle class="ln thin" cx="280" cy="153" r="56"/><circle class="ln thin" cx="280" cy="153" r="28"/>
+        <circle class="ln brass" cx="238" cy="120" r="4"/><circle class="ln brass" cx="322" cy="120" r="4"/>
+        <path class="ln" d="M280,158 L280,346 M268,346 L280,332 L292,346 L280,360 Z"/>
+        <circle class="fillbrass" cx="252" cy="150" r="3.4"/><circle class="fillbrass" cx="266" cy="150" r="3.4"/><circle class="fillbrass" cx="280" cy="150" r="3.4"/><circle class="fillbrass" cx="294" cy="150" r="3.4"/><circle class="fillbrass" cx="308" cy="150" r="3.4"/>
+      </g>
+      <g id="e-key">
+        <path class="ln brass" d="M280,196 L280,330"/>
+        <path class="ln brass" d="M280,330 l9,-9 M280,318 l9,-9 M280,306 l9,-9 M280,294 l9,-9"/>
+        <circle class="ln brass" cx="280" cy="206" r="15"/><circle class="ln brass" cx="280" cy="206" r="6"/>
+      </g>
+      <g class="e-label"><line class="ln thin" x1="330" y1="-74" x2="520" y2="-74"/><text x="526" y="-70">Federn — Andruck der Stifte</text></g>
+      <g class="e-label"><line class="ln thin" x1="330" y1="31" x2="520" y2="31"/><text x="526" y="35">Stiftzuhaltungen — das Herz</text></g>
+      <g class="e-label"><line class="ln thin" x1="350" y1="120" x2="520" y2="120"/><text x="526" y="124">Gehäuse — Bohrschutz</text></g>
+      <g class="e-label"><line class="ln thin" x1="320" y1="470" x2="520" y2="470"/><text x="526" y="474">Schlüssel — kopiergeschützt</text></g>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ DER BETRIEB — Story ============ -->
+<section class="tilo-story" id="betrieb">
+  <div class="tilo-grid">
+    <div class="tilo-portrait reveal">
+      <img src="assets/img/smith-b.jpg" alt="In der Werkstatt: Schlüsselanfertigung und Schließtechnik" loading="lazy">
+      <div class="tilo-portrait-meta">
+        <div>
+          <div class="who">Zeberl Sicherheitstechnik</div>
+          <div class="role">Meisterbetrieb · Neumarkt</div>
+        </div>
+        <div class="since">Hallertorstraße 20</div>
+      </div>
+    </div>
+    <div class="tilo-text reveal reveal-d1">
+      <span class="label">Der Betrieb</span>
+      <h2>Handwerk, das man <em>nicht sieht</em> — bis man es braucht.</h2>
+      <p>
+        Sicherheitstechnik ist Vertrauenssache. Deshalb beraten wir herstellerunabhängig: Wir empfehlen, was zu Ihrem Objekt passt — nicht, was gerade im Lager liegt. Vom ersten Aufmaß über die Montage bis zur Wartung bleibt ein Ansprechpartner verantwortlich.
+      </p>
+      <p>
+        Schließanlagen, Zutrittskontrolle, Automatikschlösser und ein Notdienst, der rund um die Uhr erreichbar ist. Sauber geplant, sauber dokumentiert, mit Festpreis und Garantie.
+      </p>
+      <blockquote class="tilo-quote">
+        "Eine gute Schließanlage merkt man erst, wenn man sie nicht mehr missen will. Genau das ist unser Anspruch."
+        <cite>— Zeberl Sicherheitstechnik</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HANDWERK — Full-Bleed Editorial ============ -->
+<section class="ed-sortiment">
+  <img src="assets/img/work-b.jpg" alt="Präzise Schlüsselanfertigung — Detail an der Fräsmaschine" loading="lazy">
+  <div class="ed-sortiment-inner">
+    <div class="ed-sortiment-box">
+      <span class="ed-kicker">Präzision</span>
+      <h2 class="ed-h2">Auf den <em>Hundertstel</em> genau.</h2>
+      <p>Ein Schlüssel passt oder er passt nicht — dazwischen gibt es nichts. Diese Genauigkeit bringen wir in jedes Projekt: von der einzelnen Anfertigung bis zur Anlage über hunderte Türen.</p>
+      <a href="#kontakt" class="btn btn-red btn-lg">Projekt anfragen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAKTEN — Counter ============ -->
+<section class="sect sect-flush-t" id="fakten">
+  <div class="container">
+    <div class="counter-editorial">
+      <div class="counter-item reveal">
+        <div class="counter-num-xxl"><span data-target="24">0</span><span class="suffix">/7</span></div>
+        <div class="counter-eyebrow">Notdienst</div>
+        <div class="counter-desc">Ausgesperrt oder Einbruchschaden? Wir sind rund um die Uhr erreichbar und öffnen schadenfrei.</div>
+      </div>
+      <div class="counter-item reveal reveal-d1">
+        <div class="counter-num-xxl"><span data-target="3">0</span></div>
+        <div class="counter-eyebrow">Kerngewerke</div>
+        <div class="counter-desc">Schließanlagen, Zutrittskontrolle und Automatikschlösser — alles aus einer Hand, ein Ansprechpartner.</div>
+      </div>
+      <div class="counter-item reveal reveal-d2">
+        <div class="counter-num-xxl"><span data-target="100">0</span><span class="suffix">%</span></div>
+        <div class="counter-eyebrow">Festpreis</div>
+        <div class="counter-desc">Was wir anbieten, gilt. Kein Stundenzettel-Roulette, keine versteckten Kosten, mit Garantie.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EINSATZBEREICHE — Pinned Horizontal ============ -->
+<section class="sect specials-intro">
+  <div class="container">
+    <div class="section-head text-center reveal">
+      <span class="label">Einsatzbereiche</span>
+      <h2>Wo wir <em>sichern</em></h2>
+      <p class="text-lead" style="max-width:560px;margin:18px auto 0;">Vom Handwerksbetrieb bis zur Industrieanlage — Sicherheitstechnik, die zum Objekt passt.</p>
+    </div>
+  </div>
+</section>
+
+<section class="specials-pin usecase">
+  <div class="specials-pin-inner">
+    <div class="specials-pin-track">
+      <div class="glass special-card">
+        <img class="special-img" src="assets/img/build-c.jpg" alt="Gewerbeobjekt" loading="lazy">
+        <div class="special-body"><span class="special-tag">Gewerbe</span><div class="special-name">Büro &amp; Verwaltung</div><div class="special-desc">Zutrittskonzepte mit Zeitprofilen, getrennten Zonen und zentraler Vergabe.</div></div>
+      </div>
+      <div class="glass special-card">
+        <img class="special-img" src="assets/img/access-c.jpg" alt="Industrieanlage" loading="lazy">
+        <div class="special-body"><span class="special-tag">Industrie</span><div class="special-name">Produktion &amp; Lager</div><div class="special-desc">Robuste Anlagen für Schichtbetrieb, Tore und sensible Bereiche.</div></div>
+      </div>
+      <div class="glass special-card">
+        <img class="special-img" src="assets/img/lock-c.jpg" alt="Wohnungswirtschaft" loading="lazy">
+        <div class="special-body"><span class="special-tag">Wohnungswirtschaft</span><div class="special-name">Mehrfamilienhäuser</div><div class="special-desc">Zentralschließanlagen mit klarer Mieter-Hierarchie, einfach erweiterbar.</div></div>
+      </div>
+      <div class="glass special-card">
+        <img class="special-img" src="assets/img/build-a.jpg" alt="Öffentliche Gebäude" loading="lazy">
+        <div class="special-body"><span class="special-tag">Kommunen</span><div class="special-name">Öffentliche Gebäude</div><div class="special-desc">Schulen, Ämter, Vereinsheime — dokumentiert und revisionssicher.</div></div>
+      </div>
+      <div class="glass special-card">
+        <img class="special-img" src="assets/img/lock-b.jpg" alt="Praxen und Kanzleien" loading="lazy">
+        <div class="special-body"><span class="special-tag">Praxen</span><div class="special-name">Arzt &amp; Kanzlei</div><div class="special-desc">Diskreter Zutritt, Automatikschlösser, geschützte Aktenbereiche.</div></div>
+      </div>
+      <div class="glass special-card">
+        <img class="special-img" src="assets/img/lock-a.jpg" alt="Notdienst" loading="lazy">
+        <div class="special-body"><span class="special-tag">24/7</span><div class="special-name">Notdienst</div><div class="special-desc">Schadenfreie Öffnung rund um die Uhr, dann saubere Instandsetzung.</div></div>
+      </div>
+    </div>
+    <div class="specials-progress"><div class="specials-progress-bar"></div></div>
+  </div>
+</section>
+
+<!-- ============ REFERENZEN ============ -->
+<section class="award-showcase" id="referenzen">
+  <div class="award-showcase-head reveal">
+    <span class="label">Referenzen</span>
+    <h2>Vom Handwerksbetrieb zur <em>Industrieanlage</em>.</h2>
+    <p class="text-lead" style="margin-top:20px;">Gewerbe, Wohnungswirtschaft, Kommunen und Industrie der Region vertrauen auf unsere Sicherheitstechnik.</p>
+  </div>
+  <div class="award-grid-pro">
+    <div class="glass award-item-pro reveal">
+      <div class="award-medallion"><span class="yr">120</span></div>
+      <div class="award-title-pro">Zutrittskonzept Gewerbe</div>
+      <div class="award-place-pro">Gewerbeobjekt · Region Neumarkt</div>
+      <div class="award-desc-pro">Vernetzte Zutrittsanlage über 120 Türen — geplant, verkabelt und in Betrieb genommen im laufenden Betrieb, ohne Stillstand.</div>
+    </div>
+    <div class="glass award-item-pro reveal reveal-d1">
+      <div class="award-medallion"><span class="yr">4×</span></div>
+      <div class="award-title-pro">Standortübergreifend</div>
+      <div class="award-place-pro">Wohnungswirtschaft</div>
+      <div class="award-desc-pro">Zentralschließanlage über vier Standorte mit einheitlicher Hierarchie und zentraler Schlüsselverwaltung.</div>
+    </div>
+    <div class="glass award-item-pro reveal reveal-d2">
+      <div class="award-medallion"><span class="yr">0</span></div>
+      <div class="award-title-pro">Tage Stillstand</div>
+      <div class="award-place-pro">Industrie · Schichtbetrieb</div>
+      <div class="award-desc-pro">Umrüstung der Zutrittskontrolle bei laufender Produktion — kein Schichtausfall, keine Unterbrechung.</div>
+    </div>
+  </div>
+  <div class="press-quote reveal">
+    <div class="press-mark">&ldquo;</div>
+    <blockquote>Saubere Beratung, fairer Festpreis, alles termingerecht montiert.</blockquote>
+    <div class="press-source">— Gewerbekunde, Neumarkt</div>
+  </div>
+</section>
+
+<!-- ============ NOTDIENST CTA BAND ============ -->
+<section class="notdienst-band">
+  <div class="nd-inner">
+    <div>
+      <div class="nd-k">Im Notfall</div>
+      <h2>Ausgesperrt? Einbruchschaden?</h2>
+      <p>Unser Notdienst sichert rund um die Uhr — schadenfreie Öffnung, dann saubere Instandsetzung. Ein Anruf genügt.</p>
+    </div>
+    <div class="nd-call">
+      <div class="nd-num">0151 15944458</div>
+      <a href="tel:+4915115944458" class="btn btn-red btn-lg" style="margin-top:14px;">Jetzt anrufen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="sect sect-bg-fire" id="reviews">
+  <div class="container">
+    <div class="section-head text-center reveal">
+      <h2>Google <em>Bewertungen</em></h2>
+      <div class="rating-row">
+        <span class="rating-stars-anim"><span></span><span></span><span></span><span></span><span></span></span>
+        <span class="rating-score">4,9 / 5</span>
+        <span class="text-muted">· Google Bewertungen</span>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="glass review-card reveal">
+        <div class="stars"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="review-text">"Schließanlage für unser Bürogebäude komplett neu geplant — saubere Beratung, fairer Festpreis, alles termingerecht montiert. Genau so stellt man sich einen Fachbetrieb vor."</p>
+        <div class="reviewer"><div class="reviewer-avatar">MK</div><div><div class="reviewer-name">Markus K.</div><div class="reviewer-meta">Google · Gewerbekunde</div></div></div>
+      </div>
+      <div class="glass review-card reveal reveal-d1">
+        <div class="stars"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="review-text">"Nachts ausgesperrt und in 20 Minuten war jemand da. Tür schadenfrei geöffnet. So wünscht man sich einen Notdienst."</p>
+        <div class="reviewer"><div class="reviewer-avatar">SB</div><div><div class="reviewer-name">Sandra B.</div><div class="reviewer-meta">Google · Privatkundin</div></div></div>
+      </div>
+      <div class="glass review-card reveal reveal-d2">
+        <div class="stars"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="review-text">"Zutrittskontrolle für mehrere Standorte. Endlich der volle Überblick, wer wann wo reinkommt. Kompetentes, zuverlässiges Team."</p>
+        <div class="reviewer"><div class="reviewer-avatar">TH</div><div><div class="reviewer-name">Thomas H.</div><div class="reviewer-meta">Google · Hausverwaltung</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAKT + ÖFFNUNGSZEITEN ============ -->
+<section class="sect sect-flush-t" id="kontakt">
+  <div class="container">
+    <div class="section-head text-center reveal" style="margin-bottom:34px;">
+      <span class="label">Kontakt</span>
+      <h2>Mitten in <em>Neumarkt</em></h2>
+      <p class="text-lead" style="max-width:540px;margin:18px auto 0;">Beratung ist kostenlos und unverbindlich. Schildern Sie kurz Ihr Anliegen — wir melden uns in der Regel innerhalb eines Werktags.</p>
+    </div>
+    <div class="two-col">
+      <div class="glass card-pad reveal">
+        <span class="label">Öffnungszeiten</span>
+        <ul class="hours-list">
+          <li class="hours-row"><span class="hours-day">Montag</span><span class="hours-time">08:00 – 17:00</span></li>
+          <li class="hours-row"><span class="hours-day">Dienstag</span><span class="hours-time">08:00 – 17:00</span></li>
+          <li class="hours-row"><span class="hours-day">Mittwoch</span><span class="hours-time">08:00 – 17:00</span></li>
+          <li class="hours-row"><span class="hours-day">Donnerstag</span><span class="hours-time">08:00 – 17:00</span></li>
+          <li class="hours-row"><span class="hours-day">Freitag</span><span class="hours-time">08:00 – 17:00</span></li>
+          <li class="hours-row"><span class="hours-day">Samstag</span><span class="hours-time">nach Vereinbarung</span></li>
+          <li class="hours-row"><span class="hours-day">Sonntag</span><span class="hours-time closed">Geschlossen</span></li>
+        </ul>
+        <p class="text-muted" style="margin-top:14px;font-size:.9rem;">Notdienst: <strong style="color:var(--gold)">24 / 7 erreichbar</strong></p>
+      </div>
+      <div class="glass card-pad reveal reveal-d1">
+        <span class="label">So erreichen Sie uns</span>
+        <dl class="info-list">
+          <dt>Adresse</dt><dd>Hallertorstraße 20, 92318 Neumarkt i.d.OPf.</dd>
+          <dt>Telefon</dt><dd><a href="tel:+49918122400">09181 22400</a></dd>
+          <dt>Notdienst</dt><dd><a href="tel:+4915115944458">0151 15944458</a></dd>
+          <dt>E-Mail</dt><dd><a href="mailto:zeberl@zeberl.de">zeberl@zeberl.de</a></dd>
+        </dl>
+        <div class="btn-row mt-32">
+          <a href="tel:+49918122400" class="btn btn-red btn-sm">Anrufen</a>
+          <a href="https://wa.me/4915254190819" class="btn btn-glass btn-sm" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <form action="https://formspree.io/f/mlgpooqw" method="POST" class="glass card-pad reveal" style="margin-top:18px;max-width:760px;margin-left:auto;margin-right:auto;">
+      <span class="label">Anfrage senden</span>
+      <div class="two-col" style="margin-top:18px;gap:14px;">
+        <div><input type="text" name="name" required placeholder="Ihr Name" style="width:100%"></div>
+        <div><input type="email" name="email" required placeholder="ihre@email.de" style="width:100%"></div>
+      </div>
+      <div class="two-col" style="gap:14px;margin-top:14px;">
+        <div><input type="tel" name="telefon" placeholder="Telefon (für Rückruf)" style="width:100%"></div>
+        <div>
+          <select name="leistung" style="width:100%">
+            <option>Schließanlage</option><option>Zutrittskontrolle</option><option>Automatikschloss</option><option>Notöffnung / Notdienst</option><option>Sonstiges</option>
+          </select>
+        </div>
+      </div>
+      <textarea name="nachricht" placeholder="Kurz zu Objekt und Anliegen…" style="width:100%;margin-top:14px;min-height:110px;"></textarea>
+      <div class="text-center" style="margin-top:18px;"><button type="submit" class="btn btn-red btn-lg">Anfrage absenden</button></div>
+    </form>
+
+    <div class="reveal" style="margin-top:20px;border-radius:18px;overflow:hidden;filter:grayscale(.35) brightness(.85) contrast(1.05);">
+      <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Standort Zeberl Sicherheitstechnik Neumarkt" style="width:100%;height:300px;border:0;display:block;" src="https://maps.google.com/maps?q=Hallertorstra%C3%9Fe%2020,%2092318%20Neumarkt&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-name">Zeberl</div>
+        <div class="logo-award">Sicherheitstechnik · Neumarkt</div>
+        <p>Meisterbetrieb für Schließanlagen, Zutrittskontrolle und Automatikschlösser in Neumarkt und der gesamten Oberpfalz. Mit 24/7-Notdienst.</p>
+        <address>Hallertorstraße 20<br>92318 Neumarkt i.d.OPf.<br><a href="tel:+49918122400">09181 22400</a></address>
+      </div>
+      <div>
+        <div class="footer-col-title">Leistungen</div>
+        <div class="footer-links">
+          <a href="#leistungen">Schließanlagen</a>
+          <a href="#leistungen">Zutrittskontrolle</a>
+          <a href="#leistungen">Automatikschlösser</a>
+          <a href="tel:+4915115944458">24/7 Notdienst</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Betrieb</div>
+        <div class="footer-links">
+          <a href="#betrieb">Über uns</a>
+          <a href="#referenzen">Referenzen</a>
+          <a href="#reviews">Bewertungen</a>
+          <a href="#kontakt">Kontakt</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Kontakt</div>
+        <div class="footer-links">
+          <a href="tel:+49918122400">09181 22400</a>
+          <a href="mailto:zeberl@zeberl.de">zeberl@zeberl.de</a>
+          <a href="https://wa.me/4915254190819" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&#169; <span class="year"></span> Zeberl Sicherheitstechnik · Neumarkt</div>
+      <div class="footer-legal">
+        <button data-open="impressum">Impressum</button>
+        <button data-open="datenschutz">Datenschutz</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="fab-whatsapp" href="https://wa.me/4915254190819" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div class="drawer-overlay"></div>
+<aside class="legal-drawer" id="drawer-impressum" role="dialog" aria-label="Impressum">
+  <button class="drawer-close" aria-label="Schließen">&#x2715;</button>
+  <h2>Impressum</h2>
+  <h3>Angaben gemäß § 5 TMG</h3>
+  <address>Zeberl Sicherheitstechnik<br>Hallertorstraße 20<br>92318 Neumarkt i.d.OPf.</address>
+  <h3>Kontakt</h3>
+  <p>Telefon: 09181 22400<br>Notdienst: 0151 15944458<br>E-Mail: <a href="mailto:zeberl@zeberl.de">zeberl@zeberl.de</a></p>
+  <h3>Inhaber / Vertretungsberechtigt</h3>
+  <p>Inhaber: <em>wird ergänzt</em></p>
+  <h3>Umsatzsteuer-ID</h3>
+  <p>USt-IdNr. nach § 27a UStG: <em>wird ergänzt</em></p>
+  <h3>Verantwortlich für den Inhalt</h3>
+  <p>Zeberl Sicherheitstechnik, Anschrift wie oben.</p>
+  <h3>Streitschlichtung</h3>
+  <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+  <p style="opacity:.6;font-size:.82rem;margin-top:18px;">Demo-Vorschau erstellt von VALORIS Webdesign &amp; SEO.</p>
+</aside>
+<aside class="legal-drawer" id="drawer-datenschutz" role="dialog" aria-label="Datenschutz">
+  <button class="drawer-close" aria-label="Schließen">&#x2715;</button>
+  <h2>Datenschutz&shy;erklärung</h2>
+  <h3>1. Verantwortliche Stelle</h3>
+  <address>Zeberl Sicherheitstechnik<br>Hallertorstraße 20, 92318 Neumarkt<br>zeberl@zeberl.de</address>
+  <h3>2. Datenerfassung</h3>
+  <p>Beim Besuch der Website werden automatisch Informationen wie IP-Adresse, Browsertyp und Zugriffszeit erfasst. Diese Daten werden nicht mit anderen Daten zusammengeführt.</p>
+  <h3>3. Kontaktformular</h3>
+  <p>Angaben aus dem Kontaktformular werden ausschließlich zur Bearbeitung der Anfrage gespeichert und verschlüsselt übermittelt. Keine Weitergabe ohne Ihre Einwilligung.</p>
+  <h3>4. Google Maps</h3>
+  <p>Diese Seite nutzt Google Maps. Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.</p>
+  <h3>5. Ihre Rechte</h3>
+  <p>Auskunft, Berichtigung, Einschränkung und Löschung: zeberl@zeberl.de</p>
+  <p style="opacity:.6;font-size:.82rem;margin-top:18px;">Demo-Vorschau erstellt von VALORIS Webdesign &amp; SEO.</p>
+</aside>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js?v=z2"></script>
+<script src="js/premium.js?v=z2"></script>
+<script>
+/* VIDEO-INTRO control */
+(function(){
+  const intro=document.getElementById('video-intro');
+  const vid=document.getElementById('introVid');
+  if(!intro) return;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let done=false;
+  function finish(){ if(done)return; done=true; intro.classList.add('done'); document.body.classList.remove('intro-lock'); setTimeout(()=>intro.remove(),900); }
+  if(reduce){ finish(); return; }
+  document.body.classList.add('intro-lock');
+  if(vid){ const p=vid.play&&vid.play(); if(p&&p.catch)p.catch(()=>{}); vid.addEventListener('ended',finish); }
+  document.getElementById('viSkip')&&document.getElementById('viSkip').addEventListener('click',finish);
+  setTimeout(finish,7500); /* Failsafe falls Video nicht lädt/endet */
+})();
+
+/* Live "heute geöffnet"-Status im Hero (Mo–Fr 08–17, Sa n.V., So zu; Notdienst 24/7) */
+(function(){
+  const el=document.getElementById('heroStatus'); if(!el) return;
+  const H={0:null,1:[8,0,17,0],2:[8,0,17,0],3:[8,0,17,0],4:[8,0,17,0],5:[8,0,17,0],6:null};
+  const names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+  const now=new Date(),d=now.getDay(),t=now.getHours()*60+now.getMinutes();
+  const fmt=(h,m)=>(h<10?'0':'')+h+':'+(m<10?'0':'')+m;
+  const today=H[d];let open=false,msg='';
+  if(today){const o=today[0]*60+today[1],c=today[2]*60+today[3];
+    if(t>=o&&t<c){open=true;msg='Heute geöffnet bis '+fmt(today[2],today[3])+' Uhr';}
+    else if(t<o){msg='Heute ab '+fmt(today[0],today[1])+' Uhr geöffnet';}}
+  if(!open&&!msg){for(let i=1;i<=7;i++){const nd=(d+i)%7;if(H[nd]){msg=(i===1?'Morgen':names[nd])+' ab '+fmt(H[nd][0],H[nd][1])+' Uhr';break;}}}
+  el.innerHTML='<span class="hs-dot '+(open?'on':'off')+'"></span>'+msg+' · Notdienst 24/7';
+})();
+
+/* AUFBAU — Explosion beim Scrollen */
+(function(){
+  const sec=document.getElementById('aufbau'); if(!sec||!window.gsap) return;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){
+    gsap.set('#e-springs',{y:-150}); gsap.set('#e-pins',{y:-78}); gsap.set('#e-key',{y:170}); gsap.set('.e-label',{opacity:1});
+    sec.style.height='auto'; const st=sec.querySelector('.explode-stage'); st.style.position='static'; st.style.minHeight='0';
+    return;
+  }
+  if(window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+  const tl=gsap.timeline({scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:.4}});
+  tl.to('#e-springs',{y:-150,ease:'none'},0)
+    .to('#e-pins',{y:-78,ease:'none'},0)
+    .to('#e-key',{y:170,ease:'none'},0)
+    .to('.e-label',{opacity:1,stagger:.06,ease:'none'},.4);
+})();
+</script>
+</body>
+</html>

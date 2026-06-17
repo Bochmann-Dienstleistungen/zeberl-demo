@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeberl — Schließplan-Modul</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap');
+:root{--bg:#0c1622;--ink:#eef2f6;--muted:#9fb3c8;--dim:#6f88a3;--gold-l:#E0C184;--line:#cfe0f0;--green:#43d17a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Hanken Grotesk',sans-serif}
+.intro,.outro{min-height:60vh;display:grid;place-items:center;text-align:center;padding:80px 24px}
+.eyb{font-family:'Spline Sans Mono',monospace;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-l);margin-bottom:14px}
+h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:-.02em;text-transform:uppercase}
+h2 em{font-style:normal;color:var(--gold-l)}
+.sub{color:var(--muted);max-width:54ch;margin:16px auto 0}
+.zones-sec{position:relative;height:300vh}
+.zones-stage{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding:40px 24px}
+.zones-stage .head{text-align:center;margin-bottom:18px}
+.zones-stage .head h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(1.5rem,3vw,2.2rem);text-transform:uppercase;letter-spacing:-.02em}
+.zones-stage .head h3 em{font-style:normal;color:var(--gold-l)}
+.zones-stage .head p{color:var(--muted);font-size:.95rem;margin-top:8px}
+svg.plan{width:min(94vw,720px);height:auto;overflow:visible}
+.plan .ln{fill:none;stroke:var(--line);stroke-width:1.4;stroke-linejoin:round;stroke-linecap:round}
+.plan .thin{stroke:#3a5a7d;stroke-width:1}
+.plan .door{fill:rgba(255,255,255,.02);stroke:var(--line);stroke-width:1.6}
+.plan .lead{stroke:#3a5a7d;stroke-width:1;opacity:0}
+.plan text{font-family:'Spline Sans Mono',monospace;font-size:12px;fill:var(--muted);opacity:0}
+.plan text.num{fill:var(--gold-l)}
+.plan .lock{opacity:0}
+.counter{margin-top:18px;font-family:'Spline Sans Mono',monospace;font-size:.74rem;letter-spacing:.1em;color:var(--dim)}
+.counter b{color:var(--green)}
+@media(prefers-reduced-motion:reduce){.zones-sec{height:auto}.zones-stage{position:static;height:auto;min-height:80vh}}
+</style>
+</head>
+<body>
+
+<section class="intro">
+  <div>
+    <div class="eyb">Schließanlagen</div>
+    <h2>Eine Anlage.<br>Klare <em>Hierarchie</em>.</h2>
+    <p class="sub">Ein Generalschlüssel, viele Zonen — jede mit eigener Berechtigung. Scrollen Sie, und sehen Sie, wie sich der Schließplan aufbaut.</p>
+  </div>
+</section>
+
+<section class="zones-sec" id="zonesSec">
+  <div class="zones-stage">
+    <div class="head">
+      <h3>Schließ<em>plan</em></h3>
+      <p>Wer darf wohin — Zone für Zone gesichert.</p>
+    </div>
+    <svg class="plan" viewBox="0 0 760 500" aria-label="Gebäude-Schließplan">
+      <!-- Gebäude -->
+      <path class="ln" d="M130,90 L280,50 L430,90 L430,470 L130,470 Z"/>
+      <line class="thin" x1="130" y1="190" x2="430" y2="190"/>
+      <line class="thin" x1="130" y1="290" x2="430" y2="290"/>
+      <line class="thin" x1="130" y1="390" x2="430" y2="390"/>
+      <!-- Fenster (Deko) -->
+      <rect class="thin" x="160" y="120" width="26" height="22"/><rect class="thin" x="374" y="120" width="26" height="22"/>
+      <rect class="thin" x="160" y="220" width="26" height="22"/><rect class="thin" x="374" y="220" width="26" height="22"/>
+      <!-- Generalschlüssel-Knoten -->
+      <circle class="ln" cx="280" cy="36" r="9"/><circle cx="280" cy="36" r="3" fill="#E0C184"/>
+      <text class="num" x="296" y="40" style="opacity:1">GHS · Generalschließung</text>
+
+      <!-- Zonen-Türen -->
+      <rect id="d1" class="door" x="255" y="405" width="50" height="65"/>
+      <rect id="d2" class="door" x="158" y="305" width="42" height="55"/>
+      <rect id="d3" class="door" x="360" y="305" width="42" height="55"/>
+      <rect id="d4" class="door" x="255" y="208" width="50" height="55"/>
+
+      <!-- Leader + Labels -->
+      <g><line class="lead l1" x1="305" y1="437" x2="470" y2="437"/><text class="num l1" x="478" y="433">01</text><text class="l1" x="500" y="433">Haupteingang · gesichert</text></g>
+      <g><line class="lead l2" x1="200" y1="332" x2="470" y2="300"/><text class="num l2" x="478" y="304">02</text><text class="l2" x="500" y="304">Büro · Zeitprofil</text></g>
+      <g><line class="lead l3" x1="402" y1="332" x2="470" y2="362"/><text class="num l3" x="478" y="366">03</text><text class="l3" x="500" y="366">Lager · nur Personal</text></g>
+      <g><line class="lead l4" x1="305" y1="235" x2="470" y2="208"/><text class="num l4" x="478" y="212">04</text><text class="l4" x="500" y="212">Serverraum · Höchststufe</text></g>
+
+      <!-- Schloss-Badges -->
+      <g class="lock lk1" transform="translate(280,437)"><circle r="13" fill="#0c1622" stroke="#E0C184" stroke-width="1.6"/><path d="M-5,-1 V-4 a5,5 0 0 1 10,0 V-1" fill="none" stroke="#E0C184" stroke-width="1.6"/><rect x="-6" y="-1" width="12" height="9" rx="2" fill="none" stroke="#E0C184" stroke-width="1.6"/></g>
+      <g class="lock lk2" transform="translate(179,332)"><circle r="13" fill="#0c1622" stroke="#E0C184" stroke-width="1.6"/><path d="M-5,-1 V-4 a5,5 0 0 1 10,0 V-1" fill="none" stroke="#E0C184" stroke-width="1.6"/><rect x="-6" y="-1" width="12" height="9" rx="2" fill="none" stroke="#E0C184" stroke-width="1.6"/></g>
+      <g class="lock lk3" transform="translate(381,332)"><circle r="13" fill="#0c1622" stroke="#E0C184" stroke-width="1.6"/><path d="M-5,-1 V-4 a5,5 0 0 1 10,0 V-1" fill="none" stroke="#E0C184" stroke-width="1.6"/><rect x="-6" y="-1" width="12" height="9" rx="2" fill="none" stroke="#E0C184" stroke-width="1.6"/></g>
+      <g class="lock lk4" transform="translate(280,235)"><circle r="13" fill="#0c1622" stroke="#E0C184" stroke-width="1.6"/><path d="M-5,-1 V-4 a5,5 0 0 1 10,0 V-1" fill="none" stroke="#E0C184" stroke-width="1.6"/><rect x="-6" y="-1" width="12" height="9" rx="2" fill="none" stroke="#E0C184" stroke-width="1.6"/></g>
+    </svg>
+    <div class="counter"><b id="cnt">0</b> / 4 Zonen gesichert</div>
+  </div>
+</section>
+
+<section class="outro">
+  <div>
+    <div class="eyb">Ein Ansprechpartner</div>
+    <h2>Geplant, montiert,<br><em>dokumentiert</em>.</h2>
+    <p class="sub">Generalschließung, Zonen, Berechtigungen — sauber geplant und revisionssicher übergeben.</p>
+  </div>
+</section>
+
+<script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+const reduceM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const cnt=document.getElementById('cnt');
+function setCnt(n){ cnt.textContent=n; }
+function lockZone(i){
+  gsap.to('#d'+i,{attr:{fill:'rgba(224,193,132,.16)'},stroke:'#E0C184',duration:.3});
+  gsap.fromTo('.lk'+i,{opacity:0,scale:.4,transformOrigin:'center'},{opacity:1,scale:1,duration:.4,ease:'back.out(2)'});
+  gsap.to('.l'+i,{opacity:1,duration:.3});
+}
+if(reduceM || !window.gsap){
+  for(let i=1;i<=4;i++) lockZone(i); setCnt(4);
+}else{
+  if(window.Lenis){ const lenis=new Lenis({lerp:.1}); lenis.on('scroll',ScrollTrigger.update); gsap.ticker.add(t=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0); }
+  gsap.registerPlugin(ScrollTrigger);
+  let done=0;
+  [.12,.36,.6,.84].forEach((p,idx)=>{
+    ScrollTrigger.create({trigger:'#zonesSec',start:'top top',end:'bottom bottom',
+      onUpdate:self=>{ if(self.progress>=p && !window['z'+idx]){ window['z'+idx]=1; lockZone(idx+1); setCnt(++done);}
+        if(self.progress<p && window['z'+idx]){ window['z'+idx]=0; gsap.to('.lk'+(idx+1),{opacity:0,duration:.2}); gsap.to('.l'+(idx+1),{opacity:0,duration:.2}); gsap.to('#d'+(idx+1),{attr:{fill:'rgba(255,255,255,.02)'},stroke:'#cfe0f0',duration:.2}); setCnt(--done);} }
+    });
+  });
+}
+</script>
+</body>
+</html>
