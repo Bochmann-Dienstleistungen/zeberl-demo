@@ -155,6 +155,7 @@ html:not(.js) .reveal{opacity:1;transform:none}/* ohne JS sichtbar — Inhalt ni
 .svc:nth-child(even) .media{order:2}
 .svc .media{position:sticky;top:13vh;border-radius:20px;overflow:hidden;border:1px solid var(--line);aspect-ratio:5/6;box-shadow:0 40px 80px -44px rgba(6,4,1,.75)}
 .svc .media img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.04);will-change:transform}
+.svc .media video{width:100%;height:100%;object-fit:cover;display:block}
 .svc .media .tag{position:absolute;top:16px;left:16px;font-family:'JetBrains Mono';font-size:.78rem;letter-spacing:.12em;color:#fff;background:rgba(8,11,15,.46);backdrop-filter:blur(7px);border:1px solid rgba(255,255,255,.22);border-radius:9px;padding:6px 12px}
 .svc .body{min-height:96vh;padding-top:clamp(6px,2vh,28px)}
 .svc:nth-child(even) .body{padding-top:clamp(40px,11vh,150px)}
@@ -390,48 +391,16 @@ footer{border-top:1px solid var(--line);padding:56px 0 30px}
         </div>
       </article>
       <article class="svc">
-        <figure class="media reveal lockviz" id="lockviz" aria-label="Schließzylinder im Schnitt — Stiftzuhaltung">
-          <svg viewBox="0 0 460 340" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-            <g class="lock-static">
-              <rect x="28" y="44" width="404" height="152" rx="12" class="lock-housing"/>
-              <rect class="lock-chan" x="81" y="58" width="30" height="226"/><rect class="lock-chan" x="145" y="58" width="30" height="226"/><rect class="lock-chan" x="209" y="58" width="30" height="226"/><rect class="lock-chan" x="273" y="58" width="30" height="226"/><rect class="lock-chan" x="337" y="58" width="30" height="226"/>
-              <path class="lock-spring" d="M87,52 l18,7 l-18,7 l18,6"/><path class="lock-spring" d="M151,52 l18,7 l-18,7 l18,6"/><path class="lock-spring" d="M215,52 l18,7 l-18,7 l18,6"/><path class="lock-spring" d="M279,52 l18,7 l-18,7 l18,6"/><path class="lock-spring" d="M343,52 l18,7 l-18,7 l18,6"/>
-              <rect x="28" y="196" width="404" height="96" rx="12" class="lock-plug"/>
-              <line x1="28" y1="196" x2="432" y2="196" class="lock-shear"/>
-              <text class="lock-lbl" x="312" y="190">SCHERLINIE</text>
-              <text class="lock-lbl" x="36" y="40">STIFTZUHALTUNG</text>
-              <text class="lock-lbl" x="40" y="282">ZYLINDERKERN</text>
-            </g>
-            <g id="lockDrivers">
-              <rect class="lock-driver" x="83" y="174" width="26" height="58" rx="4"/>
-              <rect class="lock-driver" x="147" y="182" width="26" height="58" rx="4"/>
-              <rect class="lock-driver" x="211" y="168" width="26" height="58" rx="4"/>
-              <rect class="lock-driver" x="275" y="186" width="26" height="58" rx="4"/>
-              <rect class="lock-driver" x="339" y="178" width="26" height="58" rx="4"/>
-            </g>
-            <g id="lockKeypins">
-              <rect class="lock-keypin" x="83" y="232" width="26" height="54" rx="4"/>
-              <rect class="lock-keypin" x="147" y="240" width="26" height="46" rx="4"/>
-              <rect class="lock-keypin" x="211" y="226" width="26" height="60" rx="4"/>
-              <rect class="lock-keypin" x="275" y="244" width="26" height="42" rx="4"/>
-              <rect class="lock-keypin" x="339" y="236" width="26" height="50" rx="4"/>
-            </g>
-            <g id="lockKey">
-              <path class="lock-key" d="M40,290 L406,290 L406,242 L352,246 L288,238 L224,256 L160,242 L96,250 L40,264 Z"/>
-              <rect class="lock-key" x="406" y="244" width="48" height="46" rx="12"/>
-              <circle cx="430" cy="267" r="9" fill="#0e1320"/>
-            </g>
-          </svg>
-          <div class="lock-cap">
-            <span class="lock-status" id="lockStatus">● Verriegelt</span>
-            <button type="button" class="lock-replay" id="lockReplay">Schließvorgang ansehen ▸</button>
-          </div>
+        <figure class="media reveal media-video" aria-label="Schließzylinder — Schlüssel dreht im Euro-Profilzylinder">
+          <video id="cylVideo" autoplay muted loop playsinline poster="assets/brand/cyl-b.png">
+            <source src="assets/brand/cylinder.mp4" type="video/mp4">
+          </video>
           <span class="tag">02</span>
         </figure>
         <div class="body reveal">
           <div class="num">Zutrittskontrolle</div>
           <h3>Elektronischer Zutritt</h3>
-          <p>Sie entscheiden, wer wo rein darf — und können Berechtigungen jederzeit geben oder nehmen, etwa wenn ein Zutrittsmedium verloren geht. Genau das planen wir — probier's links gleich aus.</p>
+          <p>Sie entscheiden, wer wo rein darf — und können Berechtigungen jederzeit geben oder nehmen, etwa wenn ein Zutrittsmedium verloren geht. Wir planen Ihren elektronischen Zutritt, vom einzelnen Türöffner bis zur vernetzten Anlage.</p>
           <div class="subs"><span>Transponder</span><span>PIN &amp; App</span><span>Zeitprofile</span></div>
           <div class="brands">Systeme: Uhlmann &amp; Zacher · Pegasys · BKS</div>
         </div>
@@ -634,6 +603,7 @@ function start(){
   burger.addEventListener('click',()=>nl.classList.toggle('open'));
   nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
 
+  if(reduceM){const cv=document.getElementById('cylVideo');if(cv){cv.removeAttribute('autoplay');cv.pause();}}
   if(reduceM||!window.gsap){
     document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in'));
     document.querySelectorAll('[data-to]').forEach(b=>b.textContent=(+b.dataset.to).toLocaleString('de-DE')+(b.dataset.suffix||''));
