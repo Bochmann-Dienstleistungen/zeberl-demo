@@ -18,6 +18,19 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Hanken Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* ===== Technische Art-Direction: Konstruktions-Raster + Film-Grain (Brand-Signatur Präzision) ===== */
+.tex-grid{position:fixed;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(201,138,75,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,138,75,.07) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(140% 130% at 50% 25%,#000 45%,transparent 100%);mask-image:radial-gradient(140% 130% at 50% 25%,#000 45%,transparent 100%)}
+.tex-grain{position:fixed;inset:0;z-index:101;pointer-events:none;opacity:.055;mix-blend-mode:soft-light;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(prefers-reduced-motion:reduce){.tex-grain{display:none}}
+/* Technische Annotation (Brand-Signatur: Schlüssel-Schnittprofil + Maßlineal) */
+.tech-strip{display:flex;align-items:center;gap:16px;margin-bottom:40px;font-family:'JetBrains Mono';font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.tech-strip .tx-no{color:var(--gold-l);font-weight:500}
+.tech-strip .tx-cut{flex-shrink:0;width:128px;height:22px;color:var(--gold)}
+.tech-strip .tx-cut svg{width:100%;height:100%;overflow:visible;display:block}
+.tech-strip .tx-cut polyline{fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.tech-strip .tx-rule{flex:1;height:14px;min-width:40px;background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 14px);border-bottom:1px solid var(--line);-webkit-mask:linear-gradient(90deg,#000 60%,transparent);mask:linear-gradient(90deg,#000 60%,transparent)}
+.tech-strip .tx-label{white-space:nowrap}
+@media(max-width:600px){.tech-strip .tx-rule{display:none}}
 h1,h2,h3,h4{font-family:'Sora',sans-serif;letter-spacing:-.02em;line-height:1.02}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
@@ -140,7 +153,7 @@ html:not(.js) .reveal{opacity:1;transform:none}/* ohne JS sichtbar — Inhalt ni
 .svc{display:grid;grid-template-columns:1.18fr .82fr;gap:clamp(28px,5vw,76px);align-items:start}
 .svc:nth-child(even){grid-template-columns:.82fr 1.18fr}
 .svc:nth-child(even) .media{order:2}
-.svc .media{position:sticky;top:13vh;border-radius:20px;overflow:hidden;border:1px solid var(--line);aspect-ratio:5/6;box-shadow:0 44px 90px -46px rgba(26,31,38,.5)}
+.svc .media{position:sticky;top:13vh;border-radius:20px;overflow:hidden;border:1px solid var(--line);aspect-ratio:5/6;box-shadow:0 40px 80px -44px rgba(6,4,1,.75)}
 .svc .media img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.04);will-change:transform}
 .svc .media .tag{position:absolute;top:16px;left:16px;font-family:'JetBrains Mono';font-size:.78rem;letter-spacing:.12em;color:#fff;background:rgba(8,11,15,.46);backdrop-filter:blur(7px);border:1px solid rgba(255,255,255,.22);border-radius:9px;padding:6px 12px}
 .svc .body{min-height:96vh;padding-top:clamp(6px,2vh,28px)}
@@ -152,7 +165,7 @@ html:not(.js) .reveal{opacity:1;transform:none}/* ohne JS sichtbar — Inhalt ni
 .svc .body .subs span{font-family:'JetBrains Mono';font-size:.72rem;color:var(--gold-l);border:1px solid rgba(192,26,18,.3);border-radius:30px;padding:6px 13px}
 .svc .body .brands{font-family:'JetBrains Mono';font-size:.78rem;color:var(--dim)}
 /* Interaktives Keypad (Zutrittskontrolle) */
-.keypad{display:flex;flex-direction:column;gap:14px;padding:clamp(16px,2.4vw,28px);background:linear-gradient(165deg,#222932,#13161b);box-shadow:0 44px 90px -46px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.04)}
+.keypad{display:flex;flex-direction:column;gap:14px;padding:clamp(16px,2.4vw,28px);background:linear-gradient(165deg,#222932,#13161b);box-shadow:0 40px 80px -44px rgba(6,4,1,.8),inset 0 1px 0 rgba(255,255,255,.05)}
 .keypad .kp-screen{background:#0b0e12;border:1px solid var(--line);border-radius:10px;padding:16px;min-height:60px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono';font-size:1.2rem;letter-spacing:.28em;color:var(--gold-l);transition:color .3s,border-color .3s,box-shadow .3s;text-align:center}
 .keypad.granted .kp-screen{color:#74e0a4;border-color:#2f8f5d;box-shadow:0 0 34px rgba(95,224,158,.22)}
 .keypad.denied .kp-screen{color:#e8746a;border-color:#9c4239}
@@ -287,6 +300,8 @@ footer{border-top:1px solid var(--line);padding:56px 0 30px}
 <body>
 
 <div class="progress" id="prog"></div>
+<div class="tex-grid" aria-hidden="true"></div>
+<div class="tex-grain" aria-hidden="true"></div>
 
 <!-- ===== Notruf ===== -->
 <div class="notruf" id="notruf">
@@ -351,6 +366,12 @@ footer{border-top:1px solid var(--line);padding:56px 0 30px}
 <!-- ===== Leistungen: Card-Stack ===== -->
 <section class="sec" id="leistungen">
   <div class="wrap">
+    <div class="tech-strip reveal">
+      <span class="tx-no">LV · 01–03</span>
+      <span class="tx-cut"><svg viewBox="0 0 128 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,16 16,16 24,7 32,16 48,16 56,9 64,16 80,16 88,5 96,16 112,16 120,8 128,16"/></svg></span>
+      <span class="tx-rule"></span>
+      <span class="tx-label">Leistungsverzeichnis</span>
+    </div>
     <div class="sec-head reveal">
       <h2>Drei Disziplinen,<br><em>ein Anspruch</em></h2>
       <p>Von der einzelnen Tür bis zur vernetzten Anlage über tausende Zylinder — wir planen Sicherheit, die im Alltag funktioniert.</p>
@@ -410,6 +431,12 @@ footer{border-top:1px solid var(--line);padding:56px 0 30px}
 <!-- ===== Referenzen: Bento ===== -->
 <section class="sec refs" id="referenzen">
   <div class="wrap">
+    <div class="tech-strip reveal">
+      <span class="tx-no">REF</span>
+      <span class="tx-cut"><svg viewBox="0 0 128 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,16 16,16 24,9 32,16 48,16 56,6 64,16 80,16 88,8 96,16 112,16 120,7 128,16"/></svg></span>
+      <span class="tx-rule"></span>
+      <span class="tx-label">Referenzobjekte · Bayern</span>
+    </div>
     <div class="sec-head reveal">
       <h2>Wer auf Zeberl <em>vertraut</em></h2>
       <p>Über 40 Jahre für Konzerne, Behörden, Handel und Industrie in ganz Bayern — und darüber hinaus.</p>
