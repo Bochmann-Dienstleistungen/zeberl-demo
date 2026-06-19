@@ -156,21 +156,6 @@ html:not(.js) .reveal{opacity:1;transform:none}/* ohne JS sichtbar — Inhalt ni
 .svc .media{position:sticky;top:13vh;border-radius:20px;overflow:hidden;border:1px solid var(--line);aspect-ratio:5/6;box-shadow:0 40px 80px -44px rgba(6,4,1,.75)}
 .svc .media img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.04);will-change:transform}
 .svc .media video{width:100%;height:100%;object-fit:cover;object-position:72% center;display:block}
-/* Vollbreite Feature-Reihe (bricht den Bild/Text-Rhythmus) */
-.svc-wide{margin:8px 0}
-.svc-wide .wide-media{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);min-height:clamp(380px,54vh,580px);display:flex;align-items:flex-end;box-shadow:0 44px 90px -50px rgba(6,9,16,.6)}
-.svc-wide video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% center}
-.svc-wide .wide-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,11,16,.86) 0%,rgba(8,11,16,.45) 50%,rgba(8,11,16,.05) 100%),linear-gradient(0deg,rgba(8,11,16,.66),transparent 52%)}
-.svc-wide .wide-body{position:relative;z-index:2;max-width:600px;padding:clamp(26px,4vw,52px)}
-.svc-wide .wide-body .num{font-family:'JetBrains Mono';font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l);margin-bottom:14px}
-.svc-wide .wide-body h3{font-family:'Sora';font-weight:800;text-transform:uppercase;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.03;letter-spacing:-.01em;margin-bottom:16px;color:#f4f7fb}
-.svc-wide .wide-body p{color:rgba(255,255,255,.86);font-size:1.06rem;max-width:48ch;margin-bottom:20px}
-.svc-wide .wide-body .subs{display:flex;flex-wrap:wrap;gap:8px}
-.svc-wide .wide-body .subs span{font-family:'JetBrains Mono';font-size:.72rem;color:#dbe7ff;border:1px solid rgba(255,255,255,.28);border-radius:30px;padding:6px 13px}
-/* A11y: sichtbarer Tastatur-Fokus + taktiler Druck */
-a:focus-visible,button:focus-visible{outline:2px solid var(--gold-l);outline-offset:3px;border-radius:5px}
-.btn:active{transform:scale(.975) translateY(1px)}
-.kp-key:active,.lock-replay:active{transform:scale(.95)}
 .svc .media .tag{position:absolute;top:16px;left:16px;font-family:'JetBrains Mono';font-size:.78rem;letter-spacing:.12em;color:#fff;background:rgba(8,11,15,.46);backdrop-filter:blur(7px);border:1px solid rgba(255,255,255,.22);border-radius:9px;padding:6px 12px}
 .svc .body{min-height:96vh;padding-top:clamp(6px,2vh,28px)}
 .svc:nth-child(even) .body{padding-top:clamp(40px,11vh,150px)}
@@ -315,6 +300,20 @@ footer{border-top:1px solid var(--line);padding:56px 0 30px}
   .hero-top .smoke{transform:translateY(40%)}
 }
 </style>
+<style>
+/* ===== TEST: Video-Header (Tür-Clip) ===== */
+.hero-vid{position:relative;min-height:100dvh;display:flex;align-items:flex-end;overflow:hidden;background:#0c0f14}
+.hero-vid-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% center;filter:brightness(.82) contrast(1.05) saturate(1.05)}
+.hero-vid-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,11,16,.88) 0%,rgba(8,11,16,.55) 40%,rgba(8,11,16,.12) 70%,transparent 100%),linear-gradient(0deg,rgba(8,11,16,.72),transparent 46%)}
+.hero-vid-inner{position:relative;z-index:2;padding-top:150px;padding-bottom:clamp(48px,9vh,110px)}
+.hero-vid .eyebrow{color:var(--gold-l);margin-bottom:20px}
+.hero-vid .eyebrow::before{background:var(--gold-l)}
+.hero-vid-h1{font-family:'Sora',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(2.8rem,7vw,7rem);line-height:.93;letter-spacing:-.035em;color:#f4f7fb;text-shadow:0 4px 40px rgba(0,0,0,.5)}
+.hero-vid-h1 em{font-style:normal;color:var(--gold-l)}
+.hero-vid-sub{margin-top:22px;max-width:48ch;font-size:clamp(1.05rem,1.5vw,1.3rem);color:rgba(255,255,255,.85)}
+.hero-vid-cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){.hero-vid-bg{display:none}.hero-vid{background:#10141b}}
+</style>
 </head>
 <body>
 
@@ -345,28 +344,17 @@ footer{border-top:1px solid var(--line);padding:56px 0 30px}
 </header>
 
 <!-- ===== CINEMATIC HERO (Skill cinematic-hero) ===== -->
-<section class="hero-root" id="top">
-  <div class="hero-top">
-    <div class="hero-bg">
-      <div class="back" id="back"><img src="assets/cine/back-src.jpg" alt=""></div>
-      <div class="subject" id="subject"><img src="assets/brand/key3d.jpg" alt=""></div>
-      <div class="composite" id="composite"><div class="subject" id="subjectComp"><img src="assets/brand/key3d.jpg" alt=""></div></div>
-      <div class="logo" id="logo"><svg id="logoSvg" preserveAspectRatio="xMidYMid meet"></svg></div>
-      <div class="smoke" id="smoke"><img src="assets/cine/smoke.png" alt=""></div>
-    </div>
-    <div class="content" id="content">
-      <div class="inner">
-        <div class="eyebrow" id="eyebrow">Zeberl Sicherheitstechnik GmbH · Neumarkt</div>
-        <div class="title" id="title">
-          <h1><span class="line"><span>Sicherheit,</span></span><span class="line"><span>seit <em>1978</em>.</span></span></h1>
-        </div>
-        <p class="text" id="text">Schließanlagen, Zutrittskontrolle und Automatikschlösser. Geplant, montiert und gewartet von einem Familienbetrieb in dritter Generation.</p>
-        <div class="actions" id="actions">
-          <a href="#kontakt" class="btn btn-red magnetic">Kostenlose Beratung
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a href="#leistungen" class="btn btn-glass magnetic">Leistungen</a>
-        </div>
-      </div>
+<section class="hero-vid" id="top">
+  <video class="hero-vid-bg" autoplay muted loop playsinline preload="metadata"><source src="assets/brand/door-key.mp4" type="video/mp4"></video>
+  <div class="hero-vid-scrim"></div>
+  <div class="wrap hero-vid-inner">
+    <div class="eyebrow">Zeberl Sicherheitstechnik GmbH · Neumarkt</div>
+    <h1 class="hero-vid-h1">Sicherheit,<br>seit <em>1978</em>.</h1>
+    <p class="hero-vid-sub">Schließanlagen · Zutrittskontrolle · Automatikschlösser — geplant, montiert und gewartet von einem Familienbetrieb in dritter Generation.</p>
+    <div class="hero-vid-cta">
+      <a href="#kontakt" class="btn btn-red">Kostenlose Beratung
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#leistungen" class="btn btn-glass">Leistungen</a>
     </div>
   </div>
 </section>
@@ -386,6 +374,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 30px}
 <section class="sec" id="leistungen">
   <div class="wrap">
     <div class="tech-strip reveal">
+      <span class="tx-no">LV · 01–03</span>
       <span class="tx-cut"><svg viewBox="0 0 128 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,16 16,16 24,7 32,16 48,16 56,9 64,16 80,16 88,5 96,16 112,16 120,8 128,16"/></svg></span>
       <span class="tx-rule"></span>
       <span class="tx-label">Leistungsverzeichnis</span>
@@ -396,7 +385,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 30px}
     </div>
     <div class="services">
       <article class="svc">
-        <figure class="media reveal"><img src="assets/img/lock-c.jpg" alt="Mechanische Schließzylinder"></figure>
+        <figure class="media reveal"><img src="assets/img/lock-c.jpg" alt="Mechanische Schließzylinder"><span class="tag">01</span></figure>
         <div class="body reveal">
           <div class="num">Schließanlagen</div>
           <h3>Mechanische Schließzylinder</h3>
@@ -404,22 +393,18 @@ footer{border-top:1px solid var(--line);padding:56px 0 30px}
           <div class="subs"><span>Zylindersysteme</span><span>Zentralschließanlage</span><span>Hauptschlüsselanlage</span><span>GHS-Anlage</span></div>
         </div>
       </article>
-      <article class="svc-wide reveal" aria-label="Zutrittskontrolle">
-        <figure class="wide-media">
-          <video id="cylVideo" autoplay muted loop playsinline preload="metadata">
-            <source src="assets/brand/door-key.mp4" type="video/mp4">
-          </video>
-          <div class="wide-scrim"></div>
-          <div class="wide-body">
-            <div class="num">Zutrittskontrolle</div>
-            <h3>Elektronischer Zutritt</h3>
-            <p>Sie entscheiden, wer wo rein darf, und können Berechtigungen jederzeit geben oder nehmen, etwa wenn ein Zutrittsmedium verloren geht. Wir planen Ihren elektronischen Zutritt, vom einzelnen Türöffner bis zur vernetzten Anlage.</p>
-            <div class="subs"><span>Transponder</span><span>PIN &amp; App</span><span>Zeitprofile</span></div>
-          </div>
-        </figure>
+      <article class="svc">
+        <figure class="media reveal"><img src="assets/img/access-c.jpg" alt="Elektronische Zutrittskontrolle"><span class="tag">02</span></figure>
+        <div class="body reveal">
+          <div class="num">Zutrittskontrolle</div>
+          <h3>Elektronischer Zutritt</h3>
+          <p>Sie entscheiden, wer wo rein darf — und können Berechtigungen jederzeit geben oder nehmen, etwa wenn ein Zutrittsmedium verloren geht. Wir planen Ihren elektronischen Zutritt, vom einzelnen Türöffner bis zur vernetzten Anlage.</p>
+          <div class="subs"><span>Transponder</span><span>PIN &amp; App</span><span>Zeitprofile</span></div>
+          <div class="brands">Systeme: Uhlmann &amp; Zacher · Pegasys · BKS</div>
+        </div>
       </article>
       <article class="svc">
-        <figure class="media reveal"><img src="assets/img/lock-b.jpg" alt="Automatikschlösser"></figure>
+        <figure class="media reveal"><img src="assets/img/lock-b.jpg" alt="Automatikschlösser"><span class="tag">03</span></figure>
         <div class="body reveal">
           <div class="num">Automatikschlösser</div>
           <h3>Mechanisch &amp; elektronisch</h3>
@@ -436,6 +421,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 30px}
 <section class="sec refs" id="referenzen">
   <div class="wrap">
     <div class="tech-strip reveal">
+      <span class="tx-no">REF</span>
       <span class="tx-cut"><svg viewBox="0 0 128 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,16 16,16 24,9 32,16 48,16 56,6 64,16 80,16 88,8 96,16 112,16 120,7 128,16"/></svg></span>
       <span class="tx-rule"></span>
       <span class="tx-label">Referenzobjekte · Bayern</span>
@@ -629,7 +615,7 @@ function start(){
      dadurch sitzen Wortmarke und „Schlüssel-in-den-Buchstaben" pixelgenau aufeinander. */
   const WORDMARK={"viewBox":"0.6 -204.4 1194.7 208.4","letters":["M15.45-157.64L15.45-200.43L190.72-200.43L190.72-160.37L78.34-43.07L194.82-43.07L194.82 0L4.65 0L4.65-41.56L115.80-157.64","M216.58 0L216.58-200.43L382.55-200.43L382.55-157.64L278.65-157.64L278.65-125.78L375.04-125.78L375.04-84.90L278.65-84.90L278.65-45.39L385.56-45.39L385.56 0","M413.06 0L413.06-200.43L529-200.43Q557.98-200.43 573.50-186.07Q589.02-171.72 589.02-150.53Q589.02-132.75 577.94-120.04Q570.56-111.56 556.34-106.64Q577.94-101.45 588.13-88.80Q598.31-76.15 598.31-57.01Q598.31-41.43 591.07-28.98Q583.82-16.54 571.24-9.30Q563.45-4.79 547.73-2.73Q526.81 0 519.97 0L413.06 0M475.54-159.82L475.54-121.82L502.47-121.82Q516.96-121.82 522.64-126.81Q528.31-131.80 528.31-141.23Q528.31-149.98 522.64-154.90Q516.96-159.82 502.88-159.82L475.54-159.82M475.54-83.67L475.54-43.07L507.12-43.07Q523.12-43.07 529.68-48.74Q536.24-54.41 536.24-63.98Q536.24-72.87 529.75-78.27Q523.25-83.67 506.98-83.67","M624.58 0L624.58-200.43L790.55-200.43L790.55-157.64L686.65-157.64L686.65-125.78L783.04-125.78L783.04-84.90L686.65-84.90L686.65-45.39L793.56-45.39L793.56 0","M883.95 0L821.74 0L821.74-200.43L924.96-200.43Q953.68-200.43 968.85-195.51Q984.03-190.59 993.32-177.26Q1002.62-163.93 1002.62-144.79Q1002.62-128.11 995.51-116.01Q988.40-103.91 975.96-96.39Q968.03-91.60 954.22-88.46Q965.30-84.77 970.36-81.07Q973.77-78.61 980.27-70.55Q986.76-62.48 988.95-58.11L1018.89 0L948.89 0L915.80-61.25Q909.52-73.14 904.59-76.70Q897.89-81.35 889.42-81.35L883.95-81.35L883.95 0M883.95-159.96L883.95-119.22L910.06-119.22Q914.30-119.22 926.47-121.95Q932.62-123.18 936.52-128.24Q940.41-133.30 940.41-139.86Q940.41-149.57 934.26-154.77Q928.11-159.96 911.16-159.96","M1032.71 0L1032.71-200.43L1094.65-200.43L1094.65-49.36L1191.31-49.36L1191.31 0"]};
   (function(){
-    const svg=document.getElementById('logoSvg');
+    const svg=document.getElementById('logoSvg');if(!svg)return;
     svg.setAttribute('viewBox',WORDMARK.viewBox);
     svg.innerHTML=WORDMARK.letters.map(d=>`<path d="${d}"/>`).join('');
     const maskSvg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="${WORDMARK.viewBox}"><g fill="white">`+WORDMARK.letters.map(d=>`<path d="${d}"/>`).join('')+'</g></svg>';
@@ -653,7 +639,7 @@ function start(){
   gsap.to('#smoke img',{x:26,scale:1.04,transformOrigin:'bottom center',duration:11,yoyo:true,repeat:-1,ease:'sine.inOut'});
   /* Metall-Funken & Glints (Branchen-Eyecatcher Sicherheitstechnik) */
   (function(){const stage=document.createElement('div');stage.className='ambient';
-    document.querySelector('.hero-bg').insertBefore(stage,document.getElementById('logo'));
+    const __hb=document.querySelector('.hero-bg');if(!__hb)return;__hb.insertBefore(stage,document.getElementById('logo'));
     const R=(a,b)=>a+Math.random()*(b-a);
     /* aufsteigende Funken (Glut) */
     for(let i=0;i<26;i++){const s=R(1.5,4),el=document.createElement('div');el.className='particle';
@@ -687,6 +673,10 @@ function start(){
   gsap.utils.toArray('[data-to]').forEach(b=>{const to=+b.dataset.to,suf=b.dataset.suffix||'',yr=b.dataset.year;
     ScrollTrigger.create({trigger:b,start:'top 90%',once:true,onEnter:()=>{gsap.to({v:0},{v:to,duration:1.6,ease:'power2.out',onUpdate(){b.textContent= yr?Math.round(this.targets()[0].v):Math.round(this.targets()[0].v).toLocaleString('de-DE')+suf;}});}});});
 
+  /* magnetic (micro-fx) */
+  document.querySelectorAll('.magnetic').forEach(btn=>{const p=btn.parentElement;
+    p.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();gsap.to(btn,{x:(e.clientX-(r.left+r.width/2))*.3,y:(e.clientY-(r.top+r.height/2))*.4,duration:.4});});
+    p.addEventListener('mouseleave',()=>gsap.to(btn,{x:0,y:0,duration:.5,ease:'power3.out'}));});
 
   /* Leistungen: Sticky Bild/Text-Paare — sanfter Ken-Burns-Zoom beim Durchscrollen (scroll-story) */
   gsap.utils.toArray('.svc .media').forEach(m=>{const img=m.querySelector('img'); if(!img)return;
