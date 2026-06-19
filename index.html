@@ -112,10 +112,11 @@ html:not(.js) .reveal{opacity:1;transform:none}/* ohne JS sichtbar — Inhalt ni
 .hero-root .content .inner{max-width:740px}
 .hero-root .eyebrow{justify-content:flex-start;color:var(--gold-l);letter-spacing:.28em;opacity:0;margin-bottom:22px}
 .hero-root .eyebrow::before{display:none}
-.hero-root .title h1{font-family:'Sora',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(3rem,7.6vw,7.6rem);line-height:.93;letter-spacing:-.035em;color:#f4f7fb;text-shadow:0 4px 40px rgba(0,0,0,.55)}
+.hero-root .title h1{font-family:'Sora',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(3rem,7.6vw,7.6rem);line-height:.93;letter-spacing:-.035em;color:#e9eef6;filter:drop-shadow(0 4px 40px rgba(0,0,0,.5))}
+@keyframes heroSheen{0%{background-position:135% 0}58%,100%{background-position:-35% 0}}
 .hero-root .title .line{display:block;overflow:hidden}
-.hero-root .title .line span{display:block;transform:translateY(112%)}
-.hero-root .title em{font-style:normal;color:var(--gold-l)}
+.hero-root .title .line span{display:block;transform:translateY(112%);color:transparent;background:linear-gradient(110deg,#dde6f2 0%,#dde6f2 40%,#ffffff 50%,#dde6f2 60%,#dde6f2 100%);-webkit-background-clip:text;background-clip:text;background-size:260% 100%;animation:heroSheen 6.5s ease-in-out infinite}
+.hero-root .title em{font-style:normal;color:transparent;background:linear-gradient(110deg,#2f86f0 0%,#2f86f0 42%,#aacdff 50%,#2f86f0 58%,#2f86f0 100%);-webkit-background-clip:text;background-clip:text;background-size:260% 100%;animation:heroSheen 6.5s ease-in-out infinite}
 .hero-root .text{margin:24px 0 0;font-weight:400;font-size:clamp(1.05rem,1.5vw,1.3rem);color:rgba(255,255,255,.8);max-width:48ch;opacity:0}
 .hero-root .actions{margin-top:32px;display:flex;gap:14px;justify-content:flex-start;flex-wrap:wrap;opacity:0}
 .btn-glass{border:1px solid rgba(255,255,255,.32);color:#fff}
@@ -159,7 +160,7 @@ html:not(.js) .reveal{opacity:1;transform:none}/* ohne JS sichtbar — Inhalt ni
 /* Vollbreite Feature-Reihe (bricht den Bild/Text-Rhythmus) */
 .svc-wide{margin:8px 0}
 .svc-wide .wide-media{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);min-height:clamp(380px,54vh,580px);display:flex;align-items:flex-end;box-shadow:0 44px 90px -50px rgba(6,9,16,.6)}
-.svc-wide video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% center}
+.svc-wide video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% center}
 .svc-wide .wide-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,11,16,.86) 0%,rgba(8,11,16,.45) 50%,rgba(8,11,16,.05) 100%),linear-gradient(0deg,rgba(8,11,16,.66),transparent 52%)}
 .svc-wide .wide-body{position:relative;z-index:2;max-width:600px;padding:clamp(26px,4vw,52px)}
 .svc-wide .wide-body .num{font-family:'JetBrains Mono';font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l);margin-bottom:14px}
@@ -407,7 +408,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 30px}
       <article class="svc-wide reveal" aria-label="Zutrittskontrolle">
         <figure class="wide-media">
           <video id="cylVideo" autoplay muted loop playsinline preload="metadata">
-            <source src="assets/brand/door-key.mp4" type="video/mp4">
+            <source src="assets/brand/keypad-access.mp4" type="video/mp4">
           </video>
           <div class="wide-scrim"></div>
           <div class="wide-body">
@@ -462,8 +463,8 @@ footer{border-top:1px solid var(--line);padding:56px 0 30px}
 <section class="sec" id="team">
   <div class="wrap gf-grid">
     <div class="gf-media reveal">
-      <div class="gf-card"><img src="assets/real/gf-ludwig.jpg" alt="Ludwig Zeberl"><div class="cap"><b>Ludwig Zeberl</b><span>Geschäftsführung · Schließanlagen-Planung</span></div></div>
-      <div class="gf-card"><img src="assets/real/gf-tanja.jpg" alt="Tanja Haubner"><div class="cap"><b>Tanja Haubner</b><span>Geschäftsführung · Buchhaltung</span></div></div>
+      <div class="gf-card"><img src="assets/real/ludwig-lg.jpg" alt="Ludwig Zeberl, Geschäftsführung, an seinem Arbeitsplatz"><div class="cap"><b>Ludwig Zeberl</b><span>Geschäftsführung · Schließanlagen-Planung</span></div></div>
+      <div class="gf-card"><img src="assets/real/tanja-lg.jpg" alt="Tanja Haubner, Geschäftsführung, am Telefon"><div class="cap"><b>Tanja Haubner</b><span>Geschäftsführung · Buchhaltung</span></div></div>
     </div>
     <div class="gf-text">
       <h2 style="font-size:clamp(1.9rem,4vw,3rem);font-weight:800;text-transform:uppercase" class="reveal">Ein Familien&shy;betrieb,<br>kein <em style="font-style:normal;color:var(--gold-l)">Callcenter</em>.</h2>
