@@ -364,3 +364,19 @@ footer{border-top:1px solid var(--line);padding:56px 0 30px}
 .steps-row .st p{color:var(--muted);font-size:.92rem}
 @media(max-width:820px){.steps-row{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.steps-row{grid-template-columns:1fr}}
+
+/* ===================== HOME asymmetrisch (Option 3) ===================== */
+.home .sec-head{margin-left:clamp(0px,16vw,240px);max-width:600px}
+.home .since-grid{margin-left:clamp(0px,5vw,70px)}
+.home .ref-roster,.home .ref-list{max-width:920px;margin-left:auto}
+.home .svc{grid-template-columns:1.24fr .76fr}
+.home .svc .body{min-height:112vh}          /* Sticky-Bild bleibt länger stehen */
+.home .svc:nth-child(odd) .body{padding-top:clamp(8px,3vh,40px)}
+.home #team .gf-grid{grid-template-columns:1.15fr .85fr}
+@media(max-width:820px){
+  .home .sec-head{margin-left:0}
+  .home .since-grid{margin-left:0}
+  .home .svc{grid-template-columns:1fr}
+  .home .svc .body{min-height:0}
+  .home #team .gf-grid{grid-template-columns:1fr}
+}
