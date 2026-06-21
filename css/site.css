@@ -5,7 +5,7 @@
   --steel:#6b7682;--gold:#1763d6;--gold-l:#2f86f0;--red:#1763d6;--red-d:#1352b0;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{font-family:'Hanken Grotesk',system-ui,sans-serif;background:radial-gradient(58% 46% at 84% -6%,rgba(47,134,240,.10),transparent 60%),linear-gradient(180deg,#eef1f6 0%,#e5e9ef 60%,#dfe3ea 100%);background-attachment:fixed;color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 /* ===== Technische Art-Direction: Konstruktions-Raster + Film-Grain (Brand-Signatur Präzision) ===== */
 .tex-grid{position:fixed;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(70,95,135,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(70,95,135,.06) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(140% 130% at 50% 25%,#000 45%,transparent 100%);mask-image:radial-gradient(140% 130% at 50% 25%,#000 45%,transparent 100%)}
