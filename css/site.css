@@ -34,7 +34,7 @@ img{display:block;max-width:100%}
 .btn svg{transition:transform .3s cubic-bezier(.22,1,.36,1)}
 .btn:hover svg{transform:translateX(4px)}
 .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red-d);color:#fff}
-.btn-line{border-color:var(--line);color:var(--ink)}.btn-line:hover{border-color:var(--gold-l);color:#fff}
+.btn-line{border-color:var(--line);color:var(--ink)}.btn-line:hover{border-color:var(--gold-l);color:var(--gold-l)}
 .btn svg{width:16px;height:16px}
 .reveal{opacity:0;transform:translateY(36px)}
 .reveal.in{opacity:1;transform:none;transition:opacity .9s,transform .9s cubic-bezier(.22,1,.36,1)}
